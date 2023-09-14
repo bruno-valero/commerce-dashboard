@@ -22,7 +22,7 @@ Para aprender mais sobre o TailWindCSS, dê uma olhada nos seguintes recursos:
 
 ## Sobre o Syncfusion
 
-Para aprender mais sobre o TailWindCSS, dê uma olhada nos seguintes recursos:
+Para aprender mais sobre o Syncfusion, dê uma olhada nos seguintes recursos:
 
 - [Documentação do Syncfusion](https://ej2.syncfusion.com/react/documentation/introduction) - saiba mais sobre os recursos e [`UIs`](https://www.cursospm3.com.br/glossario/ui-user-interface/) do Syncfusion.
 - [Adquira o Syncfusion](https://www.syncfusion.com) - tente fazer o **Free Trial** ou obtenha a **Community Licence** para começar a utilizar o Syncfusion gratuitamente.
