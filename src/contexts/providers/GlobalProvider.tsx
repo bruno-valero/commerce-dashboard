@@ -1,7 +1,7 @@
 'use client'
 
 import { DataState, nullish } from '@/common.types';
-import { customersData, customersGrid, earningData, employeesData, employeesGrid, ordersData, ordersGrid, stackedChartData } from '@/data/dummyTSX';
+import { customersData, customersGrid, earningData, employeesData, employeesGrid, ordersData, ordersGrid, scheduleData, stackedChartData } from '@/data/dummyTSX';
 import { usePathname } from 'next/navigation';
 import { Dispatch, ReactNode, SetStateAction, useState } from 'react';
 import GlobalContext from '../GlobalContext';
@@ -31,7 +31,8 @@ export default function GlobalProvider({ children, syncfusionRegisterLicence }:G
     finances: {
       earning: earningData,
       revenueReport: stackedChartData,
-    }
+    },
+    schedule: {data: scheduleData},
   });
 
   const context:Pathname | States | ScreenSize | ContextDataState = {
