@@ -78,7 +78,16 @@ export type DataState = {
   finances: {
     earning: EarningDataType,
     revenueReport: RevenueReport,
-  }
-}
+  },
+};
+
+export type ScheduleDataType = Array<{
+  Id: number,
+  Subject: string,
+  Location: string,
+  StartTime: string,
+  EndTime: string,
+  CategoryColor: string,
+}>;
 
 
