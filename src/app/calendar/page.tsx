@@ -6,10 +6,10 @@ interface CalendarProps {
   children?: ReactNode
 }
 
-export default async function Calendar({ children }:CalendarProps) {
+export default async function Calendar() {
   return (
     <div className='m-2 md:m-10 p-2 md:p-10 dark:bg-blue-900 bg-white rounded-3xl'>
-      {/* @ts-expect-error Server Component */}
+      
       <Header category='página' title='Calendário' />
       <CalendarComponent />
     </div>

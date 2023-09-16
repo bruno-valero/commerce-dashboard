@@ -15,6 +15,8 @@ interface GlobalProviderProps {
 
 export default function GlobalProvider({ children, syncfusionRegisterLicence }:GlobalProviderProps) {
   registerLicense(syncfusionRegisterLicence as string);
+  console.log('syncfusionRegisterLicence', syncfusionRegisterLicence);
+  
 
   const pathname:string = usePathname();
   const [chat, setChat] = useState<boolean>(false);
