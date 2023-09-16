@@ -4,7 +4,7 @@ interface HeaderProps {
   title: string;
 }
 
-export default async function Header({ category, title }:HeaderProps) {
+export default function Header({ category, title }:HeaderProps) {
   return (
     <div className='mb-10'>
       <p className='text-gray-400'>

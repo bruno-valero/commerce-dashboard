@@ -16,7 +16,7 @@ export default function StackedRevenueChart({ children }:StackedRevenueChartProp
   const revenueReport = globalData.finances.revenueReport;
   const stackedRevenueData = makeStackedRevenueData({ revenueReport });
   const axis = useMemo(() => {
-    return makeStackedRevenueAxis({ revenueReport, maxPercent: -.1 })
+    return makeStackedRevenueAxis({ revenueReport, maxPercent: .01 })
   }, [globalData.finances.revenueReport]);
   return (
     <div className="">

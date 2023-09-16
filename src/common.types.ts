@@ -32,18 +32,20 @@ export type StackedCustomSeriesType = Array<SeriesModel>;
 
 export type GridType = Array<GridColumnModel>
 
-export type CustomersDataType = Array<{
+export type CustomersDataItemType = {
   CustomerID: number,
   CustomerName: string,
   CustomerEmail: string,
-  CustomerImage: StaticImageData,
+  CustomerImage: StaticImageData | string,
   ProjectName: string,
   Status: string,
   StatusBg: string,
   Weeks: string,
   Budget: string,
   Location: string,
-}>
+}
+
+export type CustomersDataType = Array<CustomersDataItemType>
 
 export type OrdersDataType = Array<{
   OrderID: number,
@@ -66,6 +68,21 @@ export type EmployeesDataType = Array<{
     EmployeeImage: StaticImageData | string
 }>
 
+// -----------------------------------------------------
+// schedule types
+export type ScheduleDataItemType = {
+  Id: number,
+  Subject: string,
+  Location: string,
+  StartTime: string,
+  EndTime: string,
+  CategoryColor: string,
+};
+
+export type ScheduleDataType = Array<ScheduleDataItemType>;
+
+
+// -----------------------------------------------------
 // Global States
 export type CustomerState = {grid: GridType, data: CustomersDataType}
 export type OrderState = {grid: GridType, data: OrdersDataType}
@@ -79,15 +96,5 @@ export type DataState = {
     earning: EarningDataType,
     revenueReport: RevenueReport,
   },
+  schedule: {data: ScheduleDataType}
 };
-
-export type ScheduleDataType = Array<{
-  Id: number,
-  Subject: string,
-  Location: string,
-  StartTime: string,
-  EndTime: string,
-  CategoryColor: string,
-}>;
-
-
