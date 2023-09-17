@@ -1,4 +1,4 @@
-import { CustomersDataType, EarningDataType, EmployeesDataType, GridType, OrdersDataType, RevenueReport, StackedCustomSeriesType } from '@/common.types';
+import { CustomersDataType, EarningDataType, EmployeesDataType, GridType, OrdersDataType, RevenueReport, ScheduleDataType, StackedCustomSeriesType } from '@/common.types';
 import product6 from '@/data/product6.jpg';
 import { AxisModel } from '@syncfusion/ej2-react-charts/index';
 import Image from 'next/image';
@@ -2871,7 +2871,7 @@ export const ordersData:OrdersDataType = [
   },
 ];
 
-export const scheduleData = [
+export const scheduleData:ScheduleDataType = [
   {
     Id: 1,
     Subject: 'Explosion of Betelgeuse Star',
