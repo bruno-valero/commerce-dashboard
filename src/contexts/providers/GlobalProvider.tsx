@@ -1,19 +1,21 @@
 'use client'
 
 import { DataState, nullish } from '@/common.types';
-import { customersData, customersGrid, earningData, employeesData, employeesGrid, ordersData, ordersGrid, scheduleData, stackedChartData } from '@/data/dummyTSX';
+import { customersGrid, employeesGrid, ordersGrid } from '@/data/dummyTSX';
 import { usePathname } from 'next/navigation';
 import { Dispatch, ReactNode, SetStateAction, useState } from 'react';
 import GlobalContext from '../GlobalContext';
 
+import { FetchDataState } from '@/app/layout';
 import { registerLicense } from '@syncfusion/ej2-base';
 
 interface GlobalProviderProps {
   children: ReactNode;
   syncfusionRegisterLicence: string | nullish;
+  globalData: FetchDataState;
 }
 
-export default function GlobalProvider({ children, syncfusionRegisterLicence }:GlobalProviderProps) {
+export default function GlobalProvider({ children, syncfusionRegisterLicence, globalData }:GlobalProviderProps) {
   registerLicense(syncfusionRegisterLicence as string);
   console.log('syncfusionRegisterLicence', syncfusionRegisterLicence);
   
@@ -27,14 +29,15 @@ export default function GlobalProvider({ children, syncfusionRegisterLicence }:G
   const [screenSize, setScreenSize] = useState<number>(300);
   
   const [data, setData] = useState<DataState>({
-    customers: {grid: customersGrid, data: customersData},
-    orders: {grid: ordersGrid, data: ordersData},
-    employees: {grid: employeesGrid, data: employeesData},
+    customers: {grid: customersGrid, data: globalData.customers.data},
+    orders: {grid: ordersGrid, data: globalData.orders.data},
+    employees: {grid: employeesGrid, data: globalData.employees.data},
     finances: {
-      earning: earningData,
-      revenueReport: stackedChartData,
+      earning: globalData.finances.earning,
+      revenueReport: globalData.finances.revenueReport,
     },
-    schedule: {data: scheduleData},
+    schedule: {data: globalData.schedule.data},
+    baseURL: globalData.baseURL,
   });
 
   const context:Pathname | States | ScreenSize | ContextDataState = {
@@ -62,9 +65,10 @@ export type ContextDataState = {data: [DataState, Dispatch<SetStateAction<DataSt
 
 
 // SetVariabels Types
-export type SetBoolean = Dispatch<SetStateAction<boolean>>
-export type SetNumber = Dispatch<SetStateAction<number>>
-export type SetString = Dispatch<SetStateAction<string>>
+export type SetBoolean = Dispatch<SetStateAction<boolean>>;
+export type SetNumber = Dispatch<SetStateAction<number>>;
+export type SetString = Dispatch<SetStateAction<string>>;
+export type SetState<T> = Dispatch<SetStateAction<T>>;
 
 
 // GlobalState

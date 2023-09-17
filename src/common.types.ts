@@ -73,10 +73,18 @@ export type EmployeesDataType = Array<{
 export type ScheduleDataItemType = {
   Id: number,
   Subject: string,
-  Location: string,
   StartTime: string,
+  StartTimezone?: string | nullish,
   EndTime: string,
-  CategoryColor: string,
+  EndTimezone?:string | nullish,
+  Guid?:string,
+  Description?:string,
+  Location?: string,
+  IsAllDay?:boolean,
+  RecurrenceRule?:string,
+  RecurrenceID?:number,
+  IsReadonly?:boolean,
+  CategoryColor?: string,
 };
 
 export type ScheduleDataType = Array<ScheduleDataItemType>;
@@ -84,17 +92,25 @@ export type ScheduleDataType = Array<ScheduleDataItemType>;
 
 // -----------------------------------------------------
 // Global States
-export type CustomerState = {grid: GridType, data: CustomersDataType}
-export type OrderState = {grid: GridType, data: OrdersDataType}
-export type EmployeeState = {grid: GridType, data: EmployeesDataType}
+export type CustomerState = {grid: GridType, data: CustomersDataType};
+export type OrderState = {grid: GridType, data: OrdersDataType};
+export type EmployeeState = {grid: GridType, data: EmployeesDataType};
+export type FinancesState = { earning: EarningDataType, revenueReport: RevenueReport };
+export type ScheduleState = {data: ScheduleDataType};
+export type BaseURLState = string;
 
-export type DataState = {
-  customers: CustomerState,
-  orders: OrderState,
-  employees: EmployeeState,
-  finances: {
-    earning: EarningDataType,
-    revenueReport: RevenueReport,
-  },
-  schedule: {data: ScheduleDataType}
-};
+export type CustomerDataState = {customers: CustomerState}
+export type OrderDataState = {orders: OrderState}
+export type EmployeeDataState = {employees: EmployeeState}
+export type FinancesDataState = {finances: FinancesState}
+export type ScheduleDataState = {schedule: ScheduleState}
+export type BaseURLDataState = {baseURL: BaseURLState}
+
+
+export type DataState = 
+CustomerDataState & 
+OrderDataState & 
+EmployeeDataState & 
+FinancesDataState & 
+ScheduleDataState & 
+BaseURLDataState;
