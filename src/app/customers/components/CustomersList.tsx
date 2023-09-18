@@ -1,11 +1,8 @@
 'use client'
 
 import { useGlobalState } from '@/contexts/GlobalContext';
-import { CheckBoxChangeEventArgs, ColumnDirective, ColumnsDirective, ContextMenu, Edit, ExcelExport, Filter, GridComponent, Inject, Page, PdfExport, Resize, RowDeselectEventArgs, Search, Selection, Sort, Toolbar } from '@syncfusion/ej2-react-grids';
-import { MouseEvent, useEffect, useState } from 'react';
-import handleDeselect from '../functions/handleDeselect';
-import handleItemClick from '../functions/handleItemClick';
-import handleSelect from '../functions/handleSelect';
+import { ColumnDirective, ColumnsDirective, ContextMenu, Edit, ExcelExport, Filter, GridComponent, Inject, Page, PdfExport, Resize, Search, Selection, Sort, Toolbar } from '@syncfusion/ej2-react-grids';
+import { useEffect, useState } from 'react';
 
 interface CustomersListProps {
   id?: string;
@@ -30,14 +27,8 @@ export default function CustomersList({ }:CustomersListProps) {
     allowSorting
     toolbar={['Search', 'Delete']}
     editSettings={{allowDeleting: true, allowEditing: true}}
-    width='auto'
-    onClick={(e:MouseEvent) => handleItemClick({ e, setCheckedItems, checkedItems })}
-    checkBoxChange={(e:CheckBoxChangeEventArgs) => {}}    
-    rowSelected={(e:RowDeselectEventArgs) => handleSelect({ e, setCheckedItems })}
-    rowDeselected={(e:RowDeselectEventArgs) => handleDeselect({ e, setCheckedItems })}
-    rowDrop={(e) => console.log('drop')}
-    batchDelete={(e) => console.log('delete')}
-    
+    width='auto'  
+    actionComplete={(e) => console.log('actionComplete', e)}
     >
       <ColumnsDirective>
         {customers.grid.map((employee, i) => (

@@ -1,4 +1,4 @@
-import { BaseURLDataState } from '@/common.types';
+import { BaseURLDataState } from '@/contexts/providers/GlobalProvider';
 import tsUTCToDateTime from '@/utils/dateTime/tsUTCToDateTime';
 import { ResizeEventArgs } from '@syncfusion/ej2-react-schedule/index';
 

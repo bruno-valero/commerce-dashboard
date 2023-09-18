@@ -1,7 +1,7 @@
 import { ResponseCalendarRemove } from '@/app/api/calendar/remove/route';
 import { Info } from '@/app/calendar/page';
-import { BaseURLDataState, ScheduleDataItemType } from '@/common.types';
-import { SetState } from '@/contexts/providers/GlobalProvider';
+import { ScheduleDataItemType } from '@/common.types';
+import { BaseURLDataState, SetState } from '@/contexts/providers/GlobalProvider';
 import tsUTCToDateTime from '@/utils/dateTime/tsUTCToDateTime';
 
 export default async function onRemoveSchedule(props:OnRemoveSchedulePropsType):Promise<void> {

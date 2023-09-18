@@ -1,5 +1,4 @@
-import { CustomersDataType, EarningDataType, EmployeesDataType, GridType, OrdersDataType, RevenueReport, ScheduleDataType, StackedCustomSeriesType } from '@/common.types';
-import product6 from '@/data/product6.jpg';
+import { CustomersDataItemType, CustomersDataType, EarningDataType, EmployeesDataItemType, EmployeesDataType, GridType, OrdersDataItemType, OrdersDataType, RevenueReport, ScheduleDataType, StackedCustomSeriesType } from '@/common.types';
 import { AxisModel } from '@syncfusion/ej2-react-charts/index';
 import Image from 'next/image';
 import { AiOutlineAreaChart, AiOutlineBarChart, AiOutlineCalendar, AiOutlineShoppingCart, AiOutlineStock } from 'react-icons/ai';
@@ -13,38 +12,83 @@ import { IoMdContacts } from 'react-icons/io';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { RiContactsLine, RiStockLine } from 'react-icons/ri';
 import { TiTick } from 'react-icons/ti';
-import avatar from './avatar.jpg';
-import avatar2 from './avatar2.jpg';
-import avatar3 from './avatar3.png';
-import avatar4 from './avatar4.jpg';
-import product1 from './product1.jpg';
-import product2 from './product2.jpg';
-import product3 from './product3.jpg';
-import product4 from './product4.jpg';
-import product5 from './product5.jpg';
-import product7 from './product7.jpg';
 
-export const gridOrderImage = (props:any) => (
-  <div>
-    <Image
-      className="rounded-xl h-20 md:ml-3"
-      src={props.ProductImage}
-      alt="order-item"
-      width={100}
-      height={100}
-    />
-  </div>
-);
+import { BiSolidUserCircle } from 'react-icons/bi';
 
-export const gridOrderStatus = (props:any) => (
-  <button
-    type="button"
-    style={{ background: props.StatusBg }}
-    className="text-white py-1 px-2 capitalize rounded-2xl text-md"
-  >
-    {props.Status}
-  </button>
-);
+// import avatar from './avatar.jpg';
+// import avatar2 from './avatar2.jpg';
+// import avatar3 from './avatar3.png';
+// import avatar4 from './avatar4.jpg';
+// import product1 from './product1.jpg';
+// import product2 from './product2.jpg';
+// import product3 from './product3.jpg';
+// import product4 from './product4.jpg';
+// import product5 from './product5.jpg';
+// import product6 from '@/data/product6.jpg';
+// import product7 from './product7.jpg';
+
+const avatar = 'https://i.imgur.com/3NboUT9.jpg';
+const avatar2 = 'https://i.imgur.com/5dnOYeP.jpg';
+const avatar3 = 'https://i.imgur.com/z6RL67J.png';
+const avatar4 = 'https://i.imgur.com/e6EjdvB.jpg';
+const product1 = 'https://i.imgur.com/NrWIez7.jpg';
+const product2 = 'https://i.imgur.com/Z6p0Jko.jpg';
+const product3 = 'https://i.imgur.com/4ZPB41W.jpg';
+const product4 = 'https://i.imgur.com/3RGxx3L.jpg';
+const product5 = 'https://i.imgur.com/7Sy3hHT.jpg';
+const product6 = 'https://i.imgur.com/PJul8Hy.jpg';
+const product7 = 'https://i.imgur.com/uehR9Kx.jpg';
+const product8 = 'https://i.imgur.com/D9H9YDt.jpg';
+const product9 = 'https://i.imgur.com/wXGSsPE.jpg';
+
+export const gridOrderImage = (props:any) => {
+  const imagePath = 'ProductImage';
+  const domain:{isDomain?:boolean, valid?:boolean} = {};
+  checkDomain({imagePath, domain, data:props as EmployeesDataItemType & OrdersDataItemType & CustomersDataItemType})
+
+
+  if ((domain.isDomain && domain.valid) || !domain.isDomain) return (
+    <div className="flex items-center gap-2">
+      <Image
+        className="rounded-full w-10 h-10 bg-contain"
+        src={props[imagePath]}
+        alt="employee"
+        width={50}
+        height={50}
+      />
+      <p>{props.Name}</p>
+    </div>
+  );
+
+  if (domain.isDomain && !domain.valid) return (
+    <div className="flex items-center gap-2">
+      <div className='w-10 h-10'>
+        <BiSolidUserCircle size={60} />
+      </div>
+    </div>
+  );
+};
+
+export const gridOrderStatus = (props:OrdersDataItemType) => {
+  const status = props.Status;
+
+  const colors = {
+    complete: '#8BE78B',
+    pending: '#FB9678',
+    active: '#03C9D7',
+    canceled: '#FF5C8E',
+    rejected: 'red',
+  }
+  return (
+    <button
+      type="button"
+      style={{ background: colors[status] }}
+      className="text-white py-1 px-2 capitalize rounded-2xl text-md"
+    >
+      {status}
+    </button>
+  );
+};
 
 export const kanbanGrid = [
   { headerText: 'To Do',
@@ -64,18 +108,51 @@ export const kanbanGrid = [
     keyField: 'Close',
     allowToggle: true },
 ];
-const gridEmployeeProfile = (props:any) => (
-  <div className="flex items-center gap-2">
-    <Image
-      className="rounded-full w-10 h-10 bg-contain"
-      src={props.EmployeeImage}
-      alt="employee"
-      width={50}
-      height={50}
-    />
-    <p>{props.Name}</p>
-  </div>
-);
+
+type CheckDomainProps = {
+  imagePath:'ProductImage' | 'CustomerImage'| 'EmployeeImage', 
+  domain:{isDomain?:boolean, valid?:boolean},
+  data: EmployeesDataItemType & OrdersDataItemType & CustomersDataItemType;
+};
+
+function checkDomain({imagePath, domain, data}:CheckDomainProps) {
+  const registeredDomains = data.registeredDomains ?? [];
+  if (typeof data[imagePath] === 'string') {
+    domain.isDomain = true;
+    const currentDomain:string = (data[imagePath] as string).split('//')?.[1]?.split('/')?.[0] ?? '';
+    if (registeredDomains.includes(currentDomain)){
+      domain.valid = true;
+    } else { domain.valid = false; };   
+
+  } else { domain.isDomain = false; };
+};
+
+const gridEmployeeProfile = (props:EmployeesDataItemType) => {
+  const imagePath = 'EmployeeImage';
+  const domain:{isDomain?:boolean, valid?:boolean} = {};
+  checkDomain({imagePath, domain, data:props as EmployeesDataItemType & OrdersDataItemType & CustomersDataItemType})
+
+
+  if ((domain.isDomain && domain.valid) || !domain.isDomain) return (
+    <div className="flex items-center gap-2">
+      <Image
+        className="rounded-full w-10 h-10 bg-contain"
+        src={props[imagePath]}
+        alt="employee"
+        width={50}
+        height={50}
+      />
+    </div>
+  );
+
+  if (domain.isDomain && !domain.valid) return (
+    <div className="flex items-center gap-2">
+      <div className='w-10 h-10'>
+        <BiSolidUserCircle size={60} />
+      </div>
+    </div>
+  );
+};
 
 const gridEmployeeCountry = (props:any) => (
   <div className="flex items-center justify-center gap-2">
@@ -125,21 +202,33 @@ export const EditorData = () => (
     </h3>
   </div>
 );
-const customerGridImage = (props:any) => (
-  <div className="image flex gap-4">
-    <Image
-      className="rounded-full w-10 h-10"
-      src={props.CustomerImage}
-      alt="employee"
-      width={50}
-      height={50}
-    />
-    <div>
-      <p>{props.CustomerName}</p>
-      <p>{props.CustomerEmail}</p>
+const customerGridImage = (props:any) => {
+  const imagePath = 'CustomerImage';
+  const domain:{isDomain?:boolean, valid?:boolean} = {};
+  checkDomain({imagePath, domain, data:props as EmployeesDataItemType & OrdersDataItemType & CustomersDataItemType})
+
+
+  if ((domain.isDomain && domain.valid) || !domain.isDomain) return (
+    <div className="flex items-center gap-2">
+      <Image
+        className="rounded-full w-10 h-10 bg-contain"
+        src={props[imagePath]}
+        alt="employee"
+        width={50}
+        height={50}
+      />
+      <p>{props.Name}</p>
     </div>
-  </div>
-);
+  );
+
+  if (domain.isDomain && !domain.valid) return (
+    <div className="flex items-center gap-2">
+      <div className='w-10 h-10'>
+        <BiSolidUserCircle size={60} />
+      </div>
+    </div>
+  );
+};
 
 const customerGridStatus = (props:any) => (
   <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
@@ -400,9 +489,18 @@ export const LinePrimaryYAxis = {
 
 export const customersGrid:GridType = [
   { type: 'checkbox', width: '50' },
-  { headerText: 'Name',
+  { field: 'CustomerImage',    
+    headerText: 'Foto',
     width: '150',
     template: customerGridImage,
+    textAlign: 'Center' },
+  { field: 'CustomerName',
+    headerText: 'Nome',
+    width: '150',
+    textAlign: 'Center' },
+  { field: 'CustomerEmail',
+    headerText: 'Email',
+    width: '150',
     textAlign: 'Center' },
   { field: 'ProjectName',
     headerText: 'Project Name',
@@ -441,33 +539,36 @@ export const customersGrid:GridType = [
 ];
 
 export const employeesGrid:GridType = [
-  { headerText: 'Employee',
+  { type: 'checkbox', width: '50' },
+  { field: 'EmployeeImage',
+    headerText: 'Foto',
     width: '150',
     template: gridEmployeeProfile,
     textAlign: 'Center' },
   { field: 'Name',
-    headerText: '',
+    headerText: 'Nome',
     width: '0',
     textAlign: 'Center',
   },
   { field: 'Title',
-    headerText: 'Designation',
+    headerText: 'Qualificação',
     width: '170',
     textAlign: 'Center',
   },
-  { headerText: 'Country',
+  { field: 'Country',
+    headerText: 'País',
     width: '120',
     textAlign: 'Center',
     template: gridEmployeeCountry },
 
   { field: 'HireDate',
-    headerText: 'Hire Date',
+    headerText: 'Data de Admissão',
     width: '135',
     format: 'yMd',
     textAlign: 'Center' },
 
   { field: 'ReportsTo',
-    headerText: 'Reports To',
+    headerText: 'Responde a',
     width: '120',
     textAlign: 'Center' },
   { field: 'EmployeeID',
@@ -896,7 +997,9 @@ export const userProfileData = [
 ];
 
 export const ordersGrid:GridType = [
+  { type: 'checkbox', width: '50' },
   {
+    field: 'ProductImage',
     headerText: 'Image',
     template: gridOrderImage,
     textAlign: 'Center',
@@ -923,9 +1026,10 @@ export const ordersGrid:GridType = [
     width: '150',
   },
   {
+    field: 'Status',
     headerText: 'Status',
     template: gridOrderStatus,
-    field: 'OrderItems',
+    editType: 'dropdownedit',
     textAlign: 'Center',
     width: '120',
   },
@@ -2152,7 +2256,6 @@ export const ordersData:OrdersDataType = [
   {
     OrderID: 10248,
     CustomerName: 'Vinet',
-
     TotalAmount: 32.38,
     OrderItems: 'Fresh Tomato',
     Location: 'USA',

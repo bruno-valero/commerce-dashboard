@@ -68,7 +68,7 @@ export default function InfoCalendar({ visible, text, changed, setInfo }:InfoCal
 
   return (
     <div 
-    className={twMerge('absolute top-[3.7rem] left-60 bg-green-500 rounded-lg ease-in-out duration-500 cursor-default max-w-[500px]', hidden, opacity, mouseOver && 'bg-green-700', text.length >= 60 && 'top-[3rem]', text.length >= 120 && 'top-[2rem]')}
+    className={twMerge('absolute z-50 top-[3.7rem] left-60 bg-green-500 rounded-lg ease-in-out duration-500 cursor-default max-w-[500px]', hidden, opacity, mouseOver && 'bg-green-700', text.length >= 60 && 'top-[3rem]', text.length >= 120 && 'top-[2rem]')}
     onMouseOver={() => setMouseOver(true)}
     onMouseLeave={() => setMouseOver(false)}
     onTouchStart={() => setMouseOver(true)}

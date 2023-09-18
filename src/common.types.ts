@@ -2,8 +2,10 @@ import { SeriesModel } from '@syncfusion/ej2-react-charts/index';
 import { GridColumnModel } from '@syncfusion/ej2-react-grids/index';
 import { StaticImageData } from 'next/image';
 import { ReactElement } from 'react';
+import { RegisteredDomains } from './app/functions/insertRegisteredDomains';
 
 export type nullish = null | undefined;
+export type Object<K extends string | number | symbol = string, V=any> = Record<K, V>;
 
 export type MonthNamesShort = 'Jan' | 'Fev' | 'Mar' | 'Abr' | 'Mai' | 'Jun' | 'Jul' | 'Ago' | 'Set' | 'Out' | 'Nov' | 'Dez';
 export type RevenueReportItem = {x:MonthNamesShort, y:number};
@@ -43,22 +45,24 @@ export type CustomersDataItemType = {
   Weeks: string,
   Budget: string,
   Location: string,
-}
+} & RegisteredDomains;
 
 export type CustomersDataType = Array<CustomersDataItemType>
 
-export type OrdersDataType = Array<{
+export type OrdersDataItemType = {
   OrderID: number,
   CustomerName: string,
   TotalAmount: number,
   OrderItems: string,
   Location: string,
-  Status: string,
+  Status: 'pending' | 'complete' | 'active' | 'canceled' | 'rejected' ,
   StatusBg: string,
   ProductImage: StaticImageData | string,
-}>
+} & RegisteredDomains;
 
-export type EmployeesDataType = Array<{
+export type OrdersDataType = Array<OrdersDataItemType>
+
+export type EmployeesDataItemType = {
     EmployeeID: number,
     Name: string,
     Title: string,
@@ -66,7 +70,9 @@ export type EmployeesDataType = Array<{
     Country: string,
     ReportsTo: string,
     EmployeeImage: StaticImageData | string
-}>
+} & RegisteredDomains;
+
+export type EmployeesDataType = Array<EmployeesDataItemType>
 
 // -----------------------------------------------------
 // schedule types
@@ -88,29 +94,3 @@ export type ScheduleDataItemType = {
 };
 
 export type ScheduleDataType = Array<ScheduleDataItemType>;
-
-
-// -----------------------------------------------------
-// Global States
-export type CustomerState = {grid: GridType, data: CustomersDataType};
-export type OrderState = {grid: GridType, data: OrdersDataType};
-export type EmployeeState = {grid: GridType, data: EmployeesDataType};
-export type FinancesState = { earning: EarningDataType, revenueReport: RevenueReport };
-export type ScheduleState = {data: ScheduleDataType};
-export type BaseURLState = string;
-
-export type CustomerDataState = {customers: CustomerState}
-export type OrderDataState = {orders: OrderState}
-export type EmployeeDataState = {employees: EmployeeState}
-export type FinancesDataState = {finances: FinancesState}
-export type ScheduleDataState = {schedule: ScheduleState}
-export type BaseURLDataState = {baseURL: BaseURLState}
-
-
-export type DataState = 
-CustomerDataState & 
-OrderDataState & 
-EmployeeDataState & 
-FinancesDataState & 
-ScheduleDataState & 
-BaseURLDataState;

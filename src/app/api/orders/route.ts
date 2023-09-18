@@ -1,5 +1,4 @@
 import { redirect } from 'next/navigation';
-import { NextResponse } from 'next/server';
 
 const schedule = [
   {
@@ -205,6 +204,6 @@ export async function GET(req:Request):Promise<void> {
 export async function POST(req:Request) {  
   const data = await req.json();
   console.log('data', data);
-  
-  return NextResponse.json(schedule);
+  const baseURL:string = process.env.BASE_URL as string;
+  redirect(baseURL + '/orders');
 }

@@ -1,6 +1,6 @@
 import { Info } from '@/app/calendar/page';
-import { BaseURLDataState, ScheduleDataItemType } from '@/common.types';
-import { SetState } from '@/contexts/providers/GlobalProvider';
+import { ScheduleDataItemType } from '@/common.types';
+import { BaseURLDataState, SetState } from '@/contexts/providers/GlobalProvider';
 import { ActionEventArgs } from '@syncfusion/ej2-react-schedule/index';
 import onCreateSchedule from './onCreateSchedule';
 import onRemoveSchedule from './onRemoveSchedule';

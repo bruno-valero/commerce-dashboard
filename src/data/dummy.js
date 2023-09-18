@@ -9,17 +9,31 @@ import { IoMdContacts } from 'react-icons/io';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { RiContactsLine, RiStockLine } from 'react-icons/ri';
 import { TiTick } from 'react-icons/ti';
-import avatar from './avatar.jpg';
-import avatar2 from './avatar2.jpg';
-import avatar3 from './avatar3.png';
-import avatar4 from './avatar4.jpg';
-import product1 from './product1.jpg';
-import product2 from './product2.jpg';
-import product3 from './product3.jpg';
-import product4 from './product4.jpg';
-import product5 from './product5.jpg';
-import product6 from './product6.jpg';
-import product7 from './product7.jpg';
+// import avatar from './avatar.jpg';
+// import avatar2 from './avatar2.jpg';
+// import avatar3 from './avatar3.png';
+// import avatar4 from './avatar4.jpg';
+// import product1 from './product1.jpg';
+// import product2 from './product2.jpg';
+// import product3 from './product3.jpg';
+// import product4 from './product4.jpg';
+// import product5 from './product5.jpg';
+// import product6 from './product6.jpg';
+// import product7 from './product7.jpg';
+
+const avatar = 'https://i.imgur.com/3NboUT9.jpg';
+const avatar2 = 'https://i.imgur.com/5dnOYeP.jpg';
+const avatar3 = 'https://i.imgur.com/z6RL67J.png';
+const avatar4 = 'https://i.imgur.com/e6EjdvB.jpg';
+const product1 = 'https://i.imgur.com/NrWIez7.jpg';
+const product2 = 'https://i.imgur.com/Z6p0Jko.jpg';
+const product3 = 'https://i.imgur.com/4ZPB41W.jpg';
+const product4 = 'https://i.imgur.com/3RGxx3L.jpg';
+const product5 = 'https://i.imgur.com/7Sy3hHT.jpg';
+const product6 = 'https://i.imgur.com/PJul8Hy.jpg';
+const product7 = 'https://i.imgur.com/uehR9Kx.jpg';
+const product8 = 'https://i.imgur.com/D9H9YDt.jpg';
+const product9 = 'https://i.imgur.com/wXGSsPE.jpg';
 
 export const gridOrderImage = (props) => (
   <div>
