@@ -1,7 +1,7 @@
 'use client'
 
 import Charts from '@/components/Charts/index';
-import { useGlobalState } from '@/contexts/GlobalContext';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
 import { ReactNode, useMemo } from 'react';
 import makeStackedRevenueAxis from '../functions/makeStackedRevenueAxis';
 import makeStackedRevenueData from '../functions/makeStackedRevenueData';

@@ -1,4 +1,4 @@
-import { BaseURLDataState } from '@/contexts/providers/GlobalProvider';
+import { BaseURLDataState } from '@/contexts/providers/GlobalProvider/types';
 import tsUTCToDateTime from '@/utils/dateTime/tsUTCToDateTime';
 import { DragEventArgs } from '@syncfusion/ej2-react-schedule/index';
 

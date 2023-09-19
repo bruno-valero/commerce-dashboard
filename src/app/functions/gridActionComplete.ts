@@ -1,5 +1,9 @@
-import { CustomersDataItemType, EmployeesDataItemType, nullish, OrdersDataItemType } from '@/common.types';
-import { SetState } from '@/contexts/providers/GlobalProvider';
+import { nullish } from '@/common.types';
+import { Info } from '@/contexts/providers/InfoProvider/types';
+import { SetState } from '@/contexts/types';
+import { CustomersDataItemType } from '@/data/grid/customers/types';
+import { EmployeesDataItemType } from '@/data/grid/employees/types';
+import { OrdersDataItemType } from '@/data/grid/oders/types';
 import { ActionEventArgs } from '@syncfusion/ej2-react-grids/index';
 import { ResponseCustomersCreate } from '../api/customers/create/route';
 import { ResponseCustomersRemove } from '../api/customers/remove/route';
@@ -10,21 +14,19 @@ import { ResponseEmployeesUpdate } from '../api/employees/update/route';
 import { ResponseOrdersCreate } from '../api/orders/create/route';
 import { ResponseOrdersRemove } from '../api/orders/remove/route';
 import { ResponseOrdersUpdate } from '../api/orders/update/route';
-import { Info } from '../calendar/page';
 
 export type GridsDataItemTypes = EmployeesDataItemType & OrdersDataItemType & CustomersDataItemType;
 
 type ValidDomainProsType = { 
   data: GridsDataItemTypes,
-  imagePath: 'ProductImage' | 'CustomerImage'| 'EmployeeImage', 
   setNotRegisteredDomain: SetState<boolean>
  };
 
-function validDomain({ data, imagePath, setNotRegisteredDomain }:ValidDomainProsType):boolean{
+function validDomain({ data, setNotRegisteredDomain }:ValidDomainProsType):boolean{
   const registeredDomains = data.registeredDomains ?? [];
-  if (typeof data[imagePath] === 'string') {
+  if (typeof data['Image'] === 'string') {
 
-    const currentDomain:string = (data[imagePath] as string).split('//')[1].split('/')[0];
+    const currentDomain:string = (data['Image'] as string)?.split('//')?.[1]?.split('/')?.[0] ?? '';
     
     if (registeredDomains.includes(currentDomain)){
       setNotRegisteredDomain(false);
@@ -41,9 +43,10 @@ type GridCRUDRequestPropTypes = {
   data: GridsDataItemTypes | Array<GridsDataItemTypes>,
   url: string,
   setInfo: SetState<Info>,
+  gridType: 'employees' | 'orders'| 'customers',
 }
 
-async function gridCRUDRequest ({ data, url, setInfo }:GridCRUDRequestPropTypes) {
+async function gridCRUDRequest ({ data, url, setInfo, gridType }:GridCRUDRequestPropTypes) {
   const newData = Array.isArray(data) ? data : [data] as Array<GridsDataItemTypes>;
   const requestOptions:RequestInit = {
     method: 'POST',
@@ -72,27 +75,32 @@ async function gridCRUDRequest ({ data, url, setInfo }:GridCRUDRequestPropTypes)
       remove: null,
     }
 
-    if ((reqType as 'create' | 'update' | 'remove') === 'create') {
+    const reqTypeFiltered = reqType as 'create' | 'update' | 'remove';
+
+    if ((reqTypeFiltered) === 'create') {
       responses.create = await (await fetch(url, requestOptions)).json() as ResponseCreate;
     };
 
-    if ((reqType as 'create' | 'update' | 'remove') === 'update') {
+    if ((reqTypeFiltered) === 'update') {
       responses.update = await (await fetch(url, requestOptions)).json() as ResponseUpdate;
     };
 
-    if ((reqType as 'create' | 'update' | 'remove') === 'remove') {
+    if ((reqTypeFiltered) === 'remove') {
       responses.remove = await (await fetch(url, requestOptions)).json() as ResponseRemove;
     };
 
-    const response  = responses[reqType as 'create' | 'update' | 'remove'] as ResponseCreate | ResponseUpdate |ResponseRemove | nullish;
+    const response  = responses[reqTypeFiltered] as ResponseCreate & ResponseUpdate & ResponseRemove | nullish;
+
     if (!response) return;
     console.log('response', response);
     const texts = {
-      create: `item criado com sucesso!`, 
-      update: `item atualizado com sucesso!`, 
-      remove: `item removido com sucesso!`,
+      create: `${response[reqTypeFiltered].length > 1 ? 'itens criados com sucesso!' : response[reqTypeFiltered][0].Name + ': criação bem sucedida!'}`, 
+      update: `${response[reqTypeFiltered].length > 1 ? 'itens atualizados com sucesso!' : response[reqTypeFiltered][0].Name + ': atualização com sucesso!'}`, 
+      remove: `${response[reqTypeFiltered].length > 1 ? 'itens removidos com sucesso!' : response[reqTypeFiltered][0].Name + ': remoção bem sucedida!'}`,
     }
-    const text = texts[reqType as 'create' | 'update' | 'remove'] ;
+    const text = texts[reqTypeFiltered] ;
+    console.log('setando info', setInfo);
+    
     setInfo(prev => ({...prev, visible: false }));
     setInfo({visible: true, text, changed: true });
 
@@ -110,32 +118,29 @@ export default async function gridActionComplete({ event, setNotRegisteredDomain
   const action:string | undefined = event.action;
   const requestType:string | undefined = event.requestType;
   const data:GridsDataItemTypes | Array<GridsDataItemTypes> | undefined = event.data as GridsDataItemTypes | undefined;
-
+  console.log('data', data);
+  console.log('event', event);
+  
   if (!data) return;
   
-  const imageType = {
-    employees:'EmployeeImage',
-    orders:'ProductImage',
-    customers:'CustomerImage',
-  }
-
-  const imagePath = imageType[gridType] as "ProductImage" | "CustomerImage" | "EmployeeImage";
-  
-  const isValidDomain = validDomain({ data, imagePath, setNotRegisteredDomain });
-  if (!isValidDomain) return;
+  const isValidDomain = validDomain({ data, setNotRegisteredDomain });
+  if (!isValidDomain){    
+    alert('Insira uma imagem válida!');
+    return;
+  };
 
   if ((requestType === 'save') && (action === 'add')) {    
-    gridCRUDRequest({data, url:createURL, setInfo});
+    gridCRUDRequest({data, url:createURL, setInfo, gridType});
     return;
   };
 
   if ((requestType === 'save') && (action === 'edit')) {
-    gridCRUDRequest({data, url:updateURL, setInfo});
+    gridCRUDRequest({data, url:updateURL, setInfo, gridType});
     return;
   };
 
   if (requestType === 'delete') {
-    gridCRUDRequest({data, url:deleteURL, setInfo});
+    gridCRUDRequest({data, url:deleteURL, setInfo, gridType});
     return;
   };
 

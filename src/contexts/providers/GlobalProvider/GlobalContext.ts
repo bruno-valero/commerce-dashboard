@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { GlobalState } from './providers/GlobalProvider';
+import { GlobalState } from './types';
 
 const GlobalContext = createContext<Record<string, any> | {} | any>({});
 

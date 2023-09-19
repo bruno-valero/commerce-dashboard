@@ -1,7 +1,8 @@
 import { ResponseCalendarCreate } from '@/app/api/calendar/create/route';
-import { Info } from '@/app/calendar/page';
 import { ScheduleDataItemType } from '@/common.types';
-import { BaseURLDataState, SetState } from '@/contexts/providers/GlobalProvider';
+import { BaseURLDataState } from '@/contexts/providers/GlobalProvider/types';
+import { Info } from '@/contexts/providers/InfoProvider/types';
+import { SetState } from '@/contexts/types';
 import tsUTCToDateTime from '@/utils/dateTime/tsUTCToDateTime';
 
 export default async function onCreateSchedule(props:OnCreateSchedulePropsType):Promise<void> {

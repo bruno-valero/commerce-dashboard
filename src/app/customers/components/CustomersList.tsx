@@ -1,8 +1,9 @@
 'use client'
 
-import { useGlobalState } from '@/contexts/GlobalContext';
+import gridActionComplete from '@/app/functions/gridActionComplete';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
+import { useInfoState } from '@/contexts/providers/InfoProvider/InfoContext';
 import { ColumnDirective, ColumnsDirective, ContextMenu, Edit, ExcelExport, Filter, GridComponent, Inject, Page, PdfExport, Resize, Search, Selection, Sort, Toolbar } from '@syncfusion/ej2-react-grids';
-import { useEffect, useState } from 'react';
 
 interface CustomersListProps {
   id?: string;
@@ -10,14 +11,13 @@ interface CustomersListProps {
 
 export default function CustomersList({ }:CustomersListProps) {
   const globalState = useGlobalState();
+  const [, setNotRegisteredDomain] = globalState.notRegisteredDomain
   const [globalData,] = globalState.data;
   const customers = globalData.customers;
+  const baseURL = globalData.envs.baseURL;
 
-  const [checkedItems, setCheckedItems] = useState<CheckedItems>([]);
-
-  useEffect(() => {
-    console.log(checkedItems);    
-  }, [checkedItems])
+  const infoState = useInfoState();
+  const [, setInfo] =  infoState.info;
 
   return (
     <GridComponent
@@ -28,8 +28,9 @@ export default function CustomersList({ }:CustomersListProps) {
     toolbar={['Search', 'Delete']}
     editSettings={{allowDeleting: true, allowEditing: true}}
     width='auto'  
-    actionComplete={(e) => console.log('actionComplete', e)}
+    actionComplete={(event) => gridActionComplete({ event, setNotRegisteredDomain, baseURL, gridType:'customers', setInfo })}
     >
+
       <ColumnsDirective>
         {customers.grid.map((employee, i) => (
           <ColumnDirective key={i + 1} {...employee} />
@@ -57,8 +58,6 @@ export type CheckedItem = {
   location:string,
   customerId:number,
 };
-// tipo bruto do estado que contem os itens selecionados do GridComponent
-export type CheckedItems = Array<CheckedItem>;
 
 
 // tipo unico da variavel data que provem do evento de selecao ou descelecao de linhas do GridComponent

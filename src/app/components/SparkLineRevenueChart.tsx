@@ -1,7 +1,7 @@
 'use client'
 
 import Charts from '@/components/Charts/index';
-import { useGlobalState } from '@/contexts/GlobalContext';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
 import relativeProfitMargin from '@/utils/finances/relativeProfitMargin';
 import { ReactNode } from 'react';
 

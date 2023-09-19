@@ -1,6 +1,6 @@
 'use client'
 
-import { useGlobalState } from '@/contexts/GlobalContext';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
 import Link from 'next/link';
 import { SiShopware } from 'react-icons/si';
 import { HandleCloseSideBar } from '../Menu/functions/handleCloseSideBar';

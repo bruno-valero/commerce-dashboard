@@ -1,10 +1,9 @@
 'use client'
 
-import { Info } from '@/app/calendar/page';
 import gridActionComplete from '@/app/functions/gridActionComplete';
-import { useGlobalState } from '@/contexts/GlobalContext';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
+import { useInfoState } from '@/contexts/providers/InfoProvider/InfoContext';
 import { ColumnDirective, ColumnsDirective, ContextMenu, Edit, ExcelExport, Filter, GridComponent, Inject, Page, PdfExport, Resize, Search, Selection, Sort, Toolbar } from '@syncfusion/ej2-react-grids';
-import { useState } from 'react';
 
 interface EmployeesListProps {
   id?: string;
@@ -17,11 +16,8 @@ export default function EmployeesList({ }:EmployeesListProps) {
   const [, setNotRegisteredDomain] = globalState.notRegisteredDomain
   const baseURL = globalData.envs.baseURL;
 
-  const [, setInfo] = useState<Info>({
-    visible: false,
-    text: '',
-    changed: false,
-})
+  const infoState = useInfoState();
+  const [, setInfo] =  infoState.info;
 
   return (
     <GridComponent

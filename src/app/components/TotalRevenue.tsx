@@ -1,7 +1,7 @@
 'use client'
 
 import { RevenueReportItem } from '@/common.types';
-import { useGlobalState } from '@/contexts/GlobalContext';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
 import { ReactNode, useMemo } from 'react';
 import TotalRevenueBudget from './TotalRevenueBudget';
 import TotalRevenueExpense from './TotalRevenueExpense';

@@ -1,18 +1,21 @@
 'use client'
 
-import { SetState } from '@/contexts/providers/GlobalProvider';
+import { useInfoState } from '@/contexts/providers/InfoProvider/InfoContext';
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { Info } from '../../page';
 
-interface InfoCalendarProps {
-  visible: boolean;
-  text:string;
-  changed:boolean;
-  setInfo: SetState<Info>;
+interface InfoRequestProps {
+  className?:string;
 }
 
-export default function InfoCalendar({ visible, text, changed, setInfo }:InfoCalendarProps) {
+export default function InfoRequest({ className }:InfoRequestProps) {
+  
+  const infoState = useInfoState();
+  const [info, setInfo] =  infoState.info;
+  const visible = info.visible;
+  const text = info.text;
+  const changed = info.changed;
+
   const [hidden, setHidden] = useState<string>(visible ? '' : 'hidden');
   const [opacity, setOpacity] = useState<string>(visible ? 'opacity-100' : 'opacity-0');
   const [mouseOver, setMouseOver] = useState<boolean>(false);
@@ -68,7 +71,7 @@ export default function InfoCalendar({ visible, text, changed, setInfo }:InfoCal
 
   return (
     <div 
-    className={twMerge('absolute z-50 top-[3.7rem] left-60 bg-green-500 rounded-lg ease-in-out duration-500 cursor-default max-w-[500px]', hidden, opacity, mouseOver && 'bg-green-700', text.length >= 60 && 'top-[3rem]', text.length >= 120 && 'top-[2rem]')}
+    className={twMerge('absolute z-50 top-[3.7rem] left-60 bg-green-500 rounded-lg ease-in-out duration-500 cursor-default max-w-[500px]', className ?? '', hidden, opacity, mouseOver && 'bg-green-700', text.length >= 60 && 'top-[3rem]', text.length >= 120 && 'top-[2rem]')}
     onMouseOver={() => setMouseOver(true)}
     onMouseLeave={() => setMouseOver(false)}
     onTouchStart={() => setMouseOver(true)}

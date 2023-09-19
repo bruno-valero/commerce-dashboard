@@ -1,4 +1,7 @@
+import { employeesData } from '@/data/grid/employees/data';
+import { EmployeesDataType } from '@/data/grid/employees/types';
 import { redirect } from 'next/navigation';
+import { NextResponse } from 'next/server';
 
 const schedule = [
   {
@@ -201,9 +204,12 @@ export async function GET(req:Request):Promise<void> {
 
 };
 
-export async function POST(req:Request) {  
+export async function POST(req:Request):Promise<NextResponse<EmployeesDataType>> {  
   const baseURL:string = process.env.BASE_URL as string;
   const data = await req.json();
   console.log('data', data);
-  redirect(baseURL + '/employees');
+  // redirect(baseURL + '/orders');
+  return NextResponse.json(employeesData);
 }
+
+export type ResponseEmployeesRead = Promise<NextResponse<EmployeesDataType>>;

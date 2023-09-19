@@ -1,12 +1,12 @@
 'use client'
 
-import { useGlobalState } from '@/contexts/GlobalContext';
-import { links } from '@/data/dummy';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
 import { ReactNode, useEffect } from 'react';
 import Navbar from '../Navbar/index';
 import SideBar from '../SideBar/index';
 
 // import { registerLicense } from '@syncfusion/ej2-base';
+import { links } from '@/data/dummyTSX';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { BsChatLeft } from 'react-icons/bs';
 import { FiShoppingCart } from 'react-icons/fi';
