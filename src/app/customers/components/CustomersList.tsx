@@ -1,11 +1,9 @@
 'use client'
 
-import { useGlobalState } from '@/contexts/GlobalContext';
-import { CheckBoxChangeEventArgs, ColumnDirective, ColumnsDirective, ContextMenu, Edit, ExcelExport, Filter, GridComponent, Inject, Page, PdfExport, Resize, RowDeselectEventArgs, Search, Selection, Sort, Toolbar } from '@syncfusion/ej2-react-grids';
-import { MouseEvent, useEffect, useState } from 'react';
-import handleDeselect from '../functions/handleDeselect';
-import handleItemClick from '../functions/handleItemClick';
-import handleSelect from '../functions/handleSelect';
+import gridActionComplete from '@/app/functions/gridActionComplete';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
+import { useInfoState } from '@/contexts/providers/InfoProvider/InfoContext';
+import { ColumnDirective, ColumnsDirective, ContextMenu, Edit, ExcelExport, Filter, GridComponent, Inject, Page, PdfExport, Resize, Search, Selection, Sort, Toolbar } from '@syncfusion/ej2-react-grids';
 
 interface CustomersListProps {
   id?: string;
@@ -13,14 +11,13 @@ interface CustomersListProps {
 
 export default function CustomersList({ }:CustomersListProps) {
   const globalState = useGlobalState();
+  const [, setNotRegisteredDomain] = globalState.notRegisteredDomain
   const [globalData,] = globalState.data;
   const customers = globalData.customers;
+  const baseURL = globalData.envs.baseURL;
 
-  const [checkedItems, setCheckedItems] = useState<CheckedItems>([]);
-
-  useEffect(() => {
-    console.log(checkedItems);    
-  }, [checkedItems])
+  const infoState = useInfoState();
+  const [, setInfo] =  infoState.info;
 
   return (
     <GridComponent
@@ -30,15 +27,10 @@ export default function CustomersList({ }:CustomersListProps) {
     allowSorting
     toolbar={['Search', 'Delete']}
     editSettings={{allowDeleting: true, allowEditing: true}}
-    width='auto'
-    onClick={(e:MouseEvent) => handleItemClick({ e, setCheckedItems, checkedItems })}
-    checkBoxChange={(e:CheckBoxChangeEventArgs) => {}}    
-    rowSelected={(e:RowDeselectEventArgs) => handleSelect({ e, setCheckedItems })}
-    rowDeselected={(e:RowDeselectEventArgs) => handleDeselect({ e, setCheckedItems })}
-    rowDrop={(e) => console.log('drop')}
-    batchDelete={(e) => console.log('delete')}
-    
+    width='auto'  
+    actionComplete={(event) => gridActionComplete({ event, setNotRegisteredDomain, baseURL, gridType:'customers', setInfo })}
     >
+
       <ColumnsDirective>
         {customers.grid.map((employee, i) => (
           <ColumnDirective key={i + 1} {...employee} />
@@ -66,8 +58,6 @@ export type CheckedItem = {
   location:string,
   customerId:number,
 };
-// tipo bruto do estado que contem os itens selecionados do GridComponent
-export type CheckedItems = Array<CheckedItem>;
 
 
 // tipo unico da variavel data que provem do evento de selecao ou descelecao de linhas do GridComponent

@@ -1,16 +1,15 @@
 'use client'
 
-import { useGlobalState } from '@/contexts/GlobalContext';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
 import { ActionEventArgs, Agenda, Day, DragAndDrop, Inject, Month, MonthAgenda, Resize, ScheduleComponent, ViewDirective, ViewsDirective, Week, WorkWeek } from '@syncfusion/ej2-react-schedule';
 
-import { SetState } from '@/contexts/providers/GlobalProvider';
+import { useInfoState } from '@/contexts/providers/InfoProvider/InfoContext';
 import { L10n, loadCldr } from '@syncfusion/ej2-base';
 import pt from '@syncfusion/ej2-locale/src/pt.json';
 import gregorian from 'cldr-data/main/pt/ca-gregorian.json';
 import numbers from 'cldr-data/main/pt/numbers.json';
 import timeZoneNames from 'cldr-data/main/pt/timeZoneNames.json';
 import numberingSystems from 'cldr-data/supplemental/numberingSystems.json';
-import { Info } from '../../page';
 import onActionSchedule from './functions/onActionSchedule';
 
 loadCldr(
@@ -25,14 +24,16 @@ pt.pt.schedule.saveButton = 'Salvar';
 L10n.load(JSON.parse(JSON.stringify(pt)));
 
 interface CalendarComponentProps {
-  setInfo:SetState<Info>;
 }
 
-export default function CalendarComponent({ setInfo }:CalendarComponentProps) {
+export default function CalendarComponent({  }:CalendarComponentProps) {
   const globalState = useGlobalState();
   const [globalData,] = globalState.data;
   const schedule = globalData.schedule;
   const baseURL = globalData.baseURL; 
+
+  const infoState = useInfoState();
+  const [, setInfo] =  infoState.info;
   
   
   return (

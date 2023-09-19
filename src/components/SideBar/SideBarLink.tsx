@@ -1,6 +1,6 @@
 'use client'
 
-import { useGlobalState } from '@/contexts/GlobalContext';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 

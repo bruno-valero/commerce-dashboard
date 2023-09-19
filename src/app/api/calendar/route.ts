@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
 
 const schedule = [
@@ -195,12 +196,11 @@ const schedule = [
   },
 ];
 
-export async function GET(req:Request) {  
-  const head = req.headers;
-  console.log('headers', head);
-  
-  return NextResponse.json(schedule);
-}
+export async function GET(req:Request):Promise<void> {
+  const baseURL:string = process.env.BASE_URL as string;
+  redirect(baseURL + '/calendar');
+
+};
 
 export async function POST(req:Request) {  
   const data = await req.json();

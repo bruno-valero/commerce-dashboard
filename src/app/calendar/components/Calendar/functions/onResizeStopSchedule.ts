@@ -1,7 +1,7 @@
 import { ResponseCalendarUpdate } from '@/app/api/calendar/update/route';
-import { Info } from '@/app/calendar/page';
-import { BaseURLDataState } from '@/common.types';
-import { SetState } from '@/contexts/providers/GlobalProvider';
+import { BaseURLDataState } from '@/contexts/providers/GlobalProvider/types';
+import { Info } from '@/contexts/providers/InfoProvider/types';
+import { SetState } from '@/contexts/types';
 import tsUTCToDateTime from '@/utils/dateTime/tsUTCToDateTime';
 import { ResizeEventArgs } from '@syncfusion/ej2-react-schedule/index';
 

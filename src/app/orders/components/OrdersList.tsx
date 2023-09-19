@@ -1,7 +1,9 @@
 'use client'
 
-import { useGlobalState } from '@/contexts/GlobalContext';
-import { ColumnDirective, ColumnsDirective, ContextMenu, Edit, ExcelExport, Filter, GridComponent, Inject, Page, PdfExport, Resize, Sort } from '@syncfusion/ej2-react-grids';
+import gridActionComplete from '@/app/functions/gridActionComplete';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
+import { useInfoState } from '@/contexts/providers/InfoProvider/InfoContext';
+import { ColumnDirective, ColumnsDirective, ContextMenu, Edit, ExcelExport, Filter, GridComponent, Inject, Page, PdfExport, Resize, Search, Selection, Sort, Toolbar } from '@syncfusion/ej2-react-grids';
 
 interface OrdersListProps {
   id?: string;
@@ -9,8 +11,15 @@ interface OrdersListProps {
 
 export default function OrdersList({ }:OrdersListProps) {
   const globalState = useGlobalState();
+  const [, setNotRegisteredDomain] = globalState.notRegisteredDomain
   const [globalData,] = globalState.data;
   const orders = globalData.orders
+  const baseURL = globalData.envs.baseURL;
+
+  const infoState = useInfoState();
+  console.log('infoState.info', infoState.info);
+  
+  const [, setInfo] =  infoState.info;
 
   return (
     <GridComponent
@@ -18,6 +27,9 @@ export default function OrdersList({ }:OrdersListProps) {
     dataSource={orders.data}
     allowPaging
     allowSorting
+    toolbar={['Search', 'Delete', 'Add']}
+    editSettings={{allowDeleting: true, allowEditing: true, allowAdding: true}}
+    actionComplete={(event) => gridActionComplete({event, setNotRegisteredDomain, baseURL, gridType:'orders', setInfo})}
     >
       <ColumnsDirective>
         {orders.grid.map((order, i) => (
@@ -28,7 +40,7 @@ export default function OrdersList({ }:OrdersListProps) {
       <Inject services={
         [Resize, Sort, ContextMenu, 
         Filter, Page, ExcelExport, Edit,
-        PdfExport]} />
+        PdfExport, Search, Toolbar, Selection]} />
         
     </GridComponent>
   );
