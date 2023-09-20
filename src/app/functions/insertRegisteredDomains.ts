@@ -1,6 +1,7 @@
-import { Object } from '@/common.types';
+import { Obj } from '@/common.types';
 
-export default function insertRegisteredDomains(data:Array<Object>, envDomains:string) {
+
+export default function insertRegisteredDomains(data:Array<Obj>, envDomains:string) {
     const newData = data.map(item => {  
     const registeredDomains:Array<string> = envDomains.split(',');
     return {...item, registeredDomains};

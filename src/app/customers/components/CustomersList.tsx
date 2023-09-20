@@ -12,9 +12,10 @@ interface CustomersListProps {
 export default function CustomersList({ }:CustomersListProps) {
   const globalState = useGlobalState();
   const [, setNotRegisteredDomain] = globalState.notRegisteredDomain
-  const [globalData,] = globalState.data;
+  const [globalData, setGlobalData] = globalState.data;
   const customers = globalData.customers;
   const baseURL = globalData.envs.baseURL;
+  const registeredDomains = globalData.envs.registeredDomains;
 
   const infoState = useInfoState();
   const [, setInfo] =  infoState.info;
@@ -25,10 +26,10 @@ export default function CustomersList({ }:CustomersListProps) {
     dataSource={customers.data}
     allowPaging
     allowSorting
-    toolbar={['Search', 'Delete']}
-    editSettings={{allowDeleting: true, allowEditing: true}}
+    toolbar={['Search', 'Delete', 'Add']}
+    editSettings={{allowDeleting: true, allowEditing: true, allowAdding:true}}
     width='auto'  
-    actionComplete={(event) => gridActionComplete({ event, setNotRegisteredDomain, baseURL, gridType:'customers', setInfo })}
+    actionComplete={(event) => gridActionComplete({ event, setNotRegisteredDomain, baseURL, gridType:'customers', setInfo, setGlobalData, registeredDomains })}
     >
 
       <ColumnsDirective>

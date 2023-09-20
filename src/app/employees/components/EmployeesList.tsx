@@ -11,10 +11,11 @@ interface EmployeesListProps {
 
 export default function EmployeesList({ }:EmployeesListProps) {
   const globalState = useGlobalState();
-  const [globalData,] = globalState.data;
+  const [globalData, setGlobalData] = globalState.data;
   const employees = globalData.employees;
   const [, setNotRegisteredDomain] = globalState.notRegisteredDomain
   const baseURL = globalData.envs.baseURL;
+  const registeredDomains = globalData.envs.registeredDomains;
 
   const infoState = useInfoState();
   const [, setInfo] =  infoState.info;
@@ -28,7 +29,7 @@ export default function EmployeesList({ }:EmployeesListProps) {
     toolbar={['Search', 'Delete', 'Add']}
     editSettings={{allowDeleting: true, allowEditing: true, allowAdding: true}}
     width='auto'    
-    actionComplete={(event) => gridActionComplete({event, setNotRegisteredDomain, baseURL, gridType:'employees', setInfo})}
+    actionComplete={(event) => gridActionComplete({ event, setNotRegisteredDomain, baseURL, gridType:'employees', setInfo, setGlobalData, registeredDomains })}
     >
       <ColumnsDirective>
         {employees.grid.map((employee, i) => (

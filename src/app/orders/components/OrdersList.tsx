@@ -12,9 +12,10 @@ interface OrdersListProps {
 export default function OrdersList({ }:OrdersListProps) {
   const globalState = useGlobalState();
   const [, setNotRegisteredDomain] = globalState.notRegisteredDomain
-  const [globalData,] = globalState.data;
+  const [globalData, setGlobalData] = globalState.data;
   const orders = globalData.orders
   const baseURL = globalData.envs.baseURL;
+  const registeredDomains = globalData.envs.registeredDomains;
 
   const infoState = useInfoState();
   console.log('infoState.info', infoState.info);
@@ -29,7 +30,7 @@ export default function OrdersList({ }:OrdersListProps) {
     allowSorting
     toolbar={['Search', 'Delete', 'Add']}
     editSettings={{allowDeleting: true, allowEditing: true, allowAdding: true}}
-    actionComplete={(event) => gridActionComplete({event, setNotRegisteredDomain, baseURL, gridType:'orders', setInfo})}
+    actionComplete={(event) => gridActionComplete({ event, setNotRegisteredDomain, baseURL, gridType:'orders', setInfo, setGlobalData, registeredDomains })}
     >
       <ColumnsDirective>
         {orders.grid.map((order, i) => (
