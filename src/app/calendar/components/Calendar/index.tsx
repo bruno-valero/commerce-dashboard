@@ -42,10 +42,6 @@ export default function CalendarComponent({  }:CalendarComponentProps) {
     eventSettings={{dataSource: schedule.data}}    
     selectedDate={new Date(2021, 0, 10)}
     locale='pt'
-    // dragStart={(event) => onDragStartSchedule({...event, baseURL})}
-    // dragStop={(event) => onDragStopSchedule({...event, baseURL, setInfo})}
-    // resizeStart={(event) => onResizeStartSchedule({...event, baseURL})}
-    // resizeStop={(event) => onResizeStopSchedule({...event, baseURL, setInfo})}
     actionComplete={(event:ActionEventArgs) => onActionSchedule({...event, baseURL, setInfo, setGlobalData})}
     >
       <ViewsDirective>

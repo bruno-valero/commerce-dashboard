@@ -11,6 +11,7 @@ import { UseState } from '@/contexts/types';
 import { customersGrid } from '@/data/grid/customers/model';
 import { employeesGrid } from '@/data/grid/employees/model';
 import { ordersGrid } from '@/data/grid/oders/model';
+import { kanbanGrid } from '@/data/kanan/model';
 import { registerLicense } from '@syncfusion/ej2-base';
 import { DataState, GlobalContextStates } from './types';
 
@@ -44,6 +45,7 @@ export default function GlobalProvider({ children, syncfusionRegisterLicence, gl
     customers: {grid: customersGrid, data: globalData.customers.data},
     orders: {grid: ordersGrid, data: globalData.orders.data},
     employees: {grid: employeesGrid, data: globalData.employees.data},
+    kanban: {grid: kanbanGrid, data: globalData.kanban.data},
     finances: {
       earning: globalData.finances.earning,
       revenueReport: globalData.finances.revenueReport,

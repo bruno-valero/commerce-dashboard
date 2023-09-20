@@ -11,8 +11,10 @@ import { earningData, stackedChartData } from '@/data/dummyTSX';
 import { CustomersDataItemType } from '@/data/grid/customers/types';
 import { EmployeesDataItemType } from '@/data/grid/employees/types';
 import { OrdersDataItemType } from '@/data/grid/oders/types';
+import { KanbanDataType } from '@/data/kanan/types';
 import getCustomers from '@/dataFetching/getCustomers';
 import getEmployees from '@/dataFetching/getEmployees';
+import getKanban from '@/dataFetching/getKanban';
 import getOrders from '@/dataFetching/getOrders';
 import getSchedule from '@/dataFetching/getSchedule';
 import { ReactNode } from 'react';
@@ -49,13 +51,16 @@ export default async function RootLayout({ children }:RootLayoutProps) {
   const customers = await getCustomers({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
   const orders = await getOrders({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
   const employees = await getEmployees({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
+  const kanban = await getKanban({ baseURL, init:requesOptions});
   
   console.log('requisições diárias', (3600 * 24) / revalidate);
+  // console.log('kanban on layout', kanban);
 
   const data:FetchDataState = {    
     customers: {data: customers},
     orders: {data: orders},
     employees: {data: employees},
+    kanban: {data: kanban},
     finances: {
       earning: earningData,
       revenueReport: stackedChartData,
@@ -99,6 +104,7 @@ export type FetchDataState = {
   customers: {data: InsertRegisteredDomainsReturnType<CustomersDataItemType>},
   orders: {data: InsertRegisteredDomainsReturnType<OrdersDataItemType>},
   employees: {data: InsertRegisteredDomainsReturnType<EmployeesDataItemType>},
+  kanban: {data: KanbanDataType},
   finances: {
     earning: EarningDataType,
     revenueReport: RevenueReport,
