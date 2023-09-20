@@ -8,12 +8,16 @@ import Menu from '@/components/Menu/index';
 import ToolTipClientComponent from '@/components/ToolTipClientComponent';
 import GlobalProvider from '@/contexts/providers/GlobalProvider';
 import { earningData, stackedChartData } from '@/data/dummyTSX';
-import { CustomersDataItemType, CustomersDataType } from '@/data/grid/customers/types';
-import { EmployeesDataItemType, EmployeesDataType } from '@/data/grid/employees/types';
-import { OrdersDataItemType, OrdersDataType } from '@/data/grid/oders/types';
+import { CustomersDataItemType } from '@/data/grid/customers/types';
+import { EmployeesDataItemType } from '@/data/grid/employees/types';
+import { OrdersDataItemType } from '@/data/grid/oders/types';
+import getCustomers from '@/dataFetching/getCustomers';
+import getEmployees from '@/dataFetching/getEmployees';
+import getOrders from '@/dataFetching/getOrders';
+import getSchedule from '@/dataFetching/getSchedule';
 import { ReactNode } from 'react';
 import { FiSettings } from 'react-icons/fi';
-import insertRegisteredDomains, { InsertRegisteredDomainsReturnType } from './functions/insertRegisteredDomains';
+import { InsertRegisteredDomainsReturnType } from './functions/insertRegisteredDomains';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -38,21 +42,20 @@ export default async function RootLayout({ children }:RootLayoutProps) {
   const revalidate = 10;
   const requesOptions = {
     next: {revalidate},
-    method: 'POST',
-    body: JSON.stringify({password: '123456'}),
+    data: {id: '123456', user:'bruno'},
   };
 
-  const schedule:ScheduleDataType = await (await fetch(scheduleURL, requesOptions)).json();  
-  const customers:CustomersDataType = await (await fetch(customersURL, requesOptions)).json()
-  const orders:OrdersDataType = await (await fetch(ordersURL, requesOptions)).json()
-  const employees:EmployeesDataType = await (await fetch(employeesURL, requesOptions)).json()
+  const schedule:ScheduleDataType = await getSchedule({ baseURL, init:requesOptions});  
+  const customers = await getCustomers({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
+  const orders = await getOrders({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
+  const employees = await getEmployees({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
   
   console.log('requisições diárias', (3600 * 24) / revalidate);
 
   const data:FetchDataState = {    
-    customers: {data: insertRegisteredDomains(customers, process.env.REGISTERED_DOMAINS as string) as InsertRegisteredDomainsReturnType<CustomersDataItemType>},    
-    orders: {data: insertRegisteredDomains(orders, process.env.REGISTERED_DOMAINS as string) as InsertRegisteredDomainsReturnType<OrdersDataItemType>},    
-    employees: {data: insertRegisteredDomains(employees, process.env.REGISTERED_DOMAINS as string) as InsertRegisteredDomainsReturnType<EmployeesDataItemType>},
+    customers: {data: customers},
+    orders: {data: orders},
+    employees: {data: employees},
     finances: {
       earning: earningData,
       revenueReport: stackedChartData,

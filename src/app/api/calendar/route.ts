@@ -204,7 +204,7 @@ export async function GET(req:Request):Promise<void> {
 
 export async function POST(req:Request) {  
   const data = await req.json();
-  console.log('data', data);
+  console.log('data on calendar Post', data);
   
   return NextResponse.json(schedule);
 }

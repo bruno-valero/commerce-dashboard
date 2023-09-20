@@ -28,7 +28,7 @@ interface CalendarComponentProps {
 
 export default function CalendarComponent({  }:CalendarComponentProps) {
   const globalState = useGlobalState();
-  const [globalData,] = globalState.data;
+  const [globalData, setGlobalData] = globalState.data;
   const schedule = globalData.schedule;
   const baseURL = globalData.baseURL; 
 
@@ -46,7 +46,7 @@ export default function CalendarComponent({  }:CalendarComponentProps) {
     // dragStop={(event) => onDragStopSchedule({...event, baseURL, setInfo})}
     // resizeStart={(event) => onResizeStartSchedule({...event, baseURL})}
     // resizeStop={(event) => onResizeStopSchedule({...event, baseURL, setInfo})}
-    actionComplete={(event:ActionEventArgs) => onActionSchedule({...event, baseURL, setInfo})}
+    actionComplete={(event:ActionEventArgs) => onActionSchedule({...event, baseURL, setInfo, setGlobalData})}
     >
       <ViewsDirective>
         <ViewDirective option='Day' displayName='Dia' />

@@ -1,6 +1,8 @@
 import { ScheduleDataItemType } from '@/common.types';
+import { SendAuthPostRequest } from '@/dataFetching/types';
 import { redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
+import { RequestError } from '../../types';
 
 
 export async function GET(req:Request):Promise<void> {
@@ -9,11 +11,13 @@ export async function GET(req:Request):Promise<void> {
 
 };
 
-export async function POST(req:Request) {
-  const remove:Array<ScheduleDataItemType> = await req.json();
+export async function POST(req:Request):Promise<NextResponse<ResponseCalendarRemove>> {
+  const { body:remove, id, user } = (await req.json() as SendAuthPostRequest<Array<ScheduleDataItemType>>);
+  if (!remove) return NextResponse.json({ error:'Está faltando o body da requisição' });
+  console.log('data on calendar remove Post', remove);
 
   return NextResponse.json({ remove });
 };
 
-
-export type ResponseCalendarRemove = { remove: Array<ScheduleDataItemType> }
+export type ResponseCalendarRemoveOk = { remove: Array<ScheduleDataItemType> };
+export type ResponseCalendarRemove = ResponseCalendarRemoveOk | RequestError;

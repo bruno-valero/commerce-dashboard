@@ -2,7 +2,7 @@ import { SeriesModel } from '@syncfusion/ej2-react-charts/index';
 import { ReactElement } from 'react';
 
 export type nullish = null | undefined;
-export type Object<K extends string | number | symbol = string, V=any> = Record<K, V>;
+export type Obj<K extends string | number | symbol = string, V=any> = Record<K, V>;
 
 export type MonthNamesShort = 'Jan' | 'Fev' | 'Mar' | 'Abr' | 'Mai' | 'Jun' | 'Jul' | 'Ago' | 'Set' | 'Out' | 'Nov' | 'Dez';
 export type MonthNamesLong = 'Janeiro'| 'Fevereiro'| 'Março'| 'Abril'| 'Maio'| 'Junho'| 'Julho'| 'Agosto'| 'Setembro'| 'Outubro'| 'Novembro'| 'Dezembro';

@@ -207,7 +207,7 @@ export async function GET(req:Request):Promise<void> {
 export async function POST(req:Request):Promise<NextResponse<EmployeesDataType>> {  
   const baseURL:string = process.env.BASE_URL as string;
   const data = await req.json();
-  console.log('data', data);
+  console.log('data on employees Post', data);
   // redirect(baseURL + '/orders');
   return NextResponse.json(employeesData);
 }
