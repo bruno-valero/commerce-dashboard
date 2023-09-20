@@ -10,10 +10,10 @@ export const customersData:CustomersDataType = [
     Image:
       avatar2,
     ProjectName: 'Hosting Press HTML',
-    Status: 'Ativo',
+    Status: 'ativo',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Budget: '$2.4k',
+    Budget: 2400,
     Location: 'India',
   },
   {
@@ -22,13 +22,13 @@ export const customersData:CustomersDataType = [
     Name: 'Sunil Joshi',
     Email: 'sunil@gmail.com',
     ProjectName: 'Elite Admin',
-    Status: 'Ativo',
+    Status: 'ativo',
     Image:
       avatar3,
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Budget: '$3.9k',
+    Budget: 3900,
     Location: 'India',
   },
   {
@@ -37,12 +37,12 @@ export const customersData:CustomersDataType = [
     Name: 'Andrew McDownland',
     Email: 'andrew@gmail.com',
     ProjectName: 'Real Homes WP Theme',
-    Status: 'Pendente',
+    Status: 'pendente',
     Image:
       avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Budget: '$24.5k',
+    Budget: 24500,
     Location: 'USA',
   },
   {
@@ -51,12 +51,12 @@ export const customersData:CustomersDataType = [
     Name: 'Christopher Jamil',
     Email: 'jamil@gmail.com',
     ProjectName: 'MedicalPro WP Theme',
-    Status: 'Completado',
+    Status: 'completo',
     Image:
       avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -65,12 +65,12 @@ export const customersData:CustomersDataType = [
     Name: 'Michael',
     Email: 'michael@gmail.com',
     ProjectName: 'Weekly WP Theme',
-    Status: 'Cancelado',
+    Status: 'cancelado',
     Image:
       avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -80,10 +80,10 @@ export const customersData:CustomersDataType = [
     Image:
       avatar2,
     ProjectName: 'Hosting Press HTML',
-    Status: 'Ativo',
+    Status: 'ativo',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Budget: '$2.4k',
+    Budget: 2400,
     Location: 'India',
   },
   {
@@ -92,13 +92,13 @@ export const customersData:CustomersDataType = [
     Name: 'Sunil Joshi',
     Email: 'sunil@gmail.com',
     ProjectName: 'Elite Admin',
-    Status: 'Ativo',
+    Status: 'ativo',
     Image:
       avatar3,
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Budget: '$3.9k',
+    Budget: 3900,
     Location: 'India',
   },
   {
@@ -107,12 +107,12 @@ export const customersData:CustomersDataType = [
     Name: 'Andrew McDownland',
     Email: 'andrew@gmail.com',
     ProjectName: 'Real Homes WP Theme',
-    Status: 'Pendente',
+    Status: 'pendente',
     Image:
       avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Budget: '$24.5k',
+    Budget: 24500,
     Location: 'USA',
   },
   {
@@ -121,12 +121,12 @@ export const customersData:CustomersDataType = [
     Name: 'Christopher Jamil',
     Email: 'jamil@gmail.com',
     ProjectName: 'MedicalPro WP Theme',
-    Status: 'Completado',
+    Status: 'completo',
     Image:
       avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -135,12 +135,12 @@ export const customersData:CustomersDataType = [
     Name: 'Michael',
     Email: 'michael@gmail.com',
     ProjectName: 'Weekly WP Theme',
-    Status: 'Cancelado',
+    Status: 'cancelado',
     Image:
       avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -150,10 +150,10 @@ export const customersData:CustomersDataType = [
     Image:
       avatar2,
     ProjectName: 'Hosting Press HTML',
-    Status: 'Ativo',
+    Status: 'ativo',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Budget: '$2.4k',
+    Budget: 2400,
     Location: 'India',
   },
   {
@@ -162,13 +162,13 @@ export const customersData:CustomersDataType = [
     Name: 'Sunil Joshi',
     Email: 'sunil@gmail.com',
     ProjectName: 'Elite Admin',
-    Status: 'Ativo',
+    Status: 'ativo',
     Image:
       avatar3,
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Budget: '$3.9k',
+    Budget: 3900,
     Location: 'India',
   },
   {
@@ -177,12 +177,12 @@ export const customersData:CustomersDataType = [
     Name: 'Andrew McDownland',
     Email: 'andrew@gmail.com',
     ProjectName: 'Real Homes WP Theme',
-    Status: 'Pendente',
+    Status: 'pendente',
     Image:
       avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Budget: '$24.5k',
+    Budget: 24500,
     Location: 'USA',
   },
   {
@@ -191,12 +191,12 @@ export const customersData:CustomersDataType = [
     Name: 'Christopher Jamil',
     Email: 'jamil@gmail.com',
     ProjectName: 'MedicalPro WP Theme',
-    Status: 'Completado',
+    Status: 'completo',
     Image:
       avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -205,12 +205,12 @@ export const customersData:CustomersDataType = [
     Name: 'Michael',
     Email: 'michael@gmail.com',
     ProjectName: 'Weekly WP Theme',
-    Status: 'Cancelado',
+    Status: 'cancelado',
     Image:
       avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -220,10 +220,10 @@ export const customersData:CustomersDataType = [
     Image:
       avatar2,
     ProjectName: 'Hosting Press HTML',
-    Status: 'Ativo',
+    Status: 'ativo',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Budget: '$2.4k',
+    Budget: 2400,
     Location: 'India',
   },
   {
@@ -232,13 +232,13 @@ export const customersData:CustomersDataType = [
     Name: 'Sunil Joshi',
     Email: 'sunil@gmail.com',
     ProjectName: 'Elite Admin',
-    Status: 'Ativo',
+    Status: 'ativo',
     Image:
       avatar3,
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Budget: '$3.9k',
+    Budget: 3900,
     Location: 'India',
   },
   {
@@ -247,12 +247,12 @@ export const customersData:CustomersDataType = [
     Name: 'Andrew McDownland',
     Email: 'andrew@gmail.com',
     ProjectName: 'Real Homes WP Theme',
-    Status: 'Pendente',
+    Status: 'pendente',
     Image:
       avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Budget: '$24.5k',
+    Budget: 24500,
     Location: 'USA',
   },
   {
@@ -261,12 +261,12 @@ export const customersData:CustomersDataType = [
     Name: 'Christopher Jamil',
     Email: 'jamil@gmail.com',
     ProjectName: 'MedicalPro WP Theme',
-    Status: 'Completado',
+    Status: 'completo',
     Image:
       avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -275,12 +275,12 @@ export const customersData:CustomersDataType = [
     Name: 'Michael',
     Email: 'michael@gmail.com',
     ProjectName: 'Weekly WP Theme',
-    Status: 'Cancelado',
+    Status: 'cancelado',
     Image:
       avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -290,10 +290,10 @@ export const customersData:CustomersDataType = [
     Image:
       avatar2,
     ProjectName: 'Hosting Press HTML',
-    Status: 'Ativo',
+    Status: 'ativo',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Budget: '$2.4k',
+    Budget: 2400,
     Location: 'India',
   },
   {
@@ -302,13 +302,13 @@ export const customersData:CustomersDataType = [
     Name: 'Sunil Joshi',
     Email: 'sunil@gmail.com',
     ProjectName: 'Elite Admin',
-    Status: 'Ativo',
+    Status: 'ativo',
     Image:
       avatar3,
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Budget: '$3.9k',
+    Budget: 3900,
     Location: 'India',
   },
   {
@@ -317,12 +317,12 @@ export const customersData:CustomersDataType = [
     Name: 'Andrew McDownland',
     Email: 'andrew@gmail.com',
     ProjectName: 'Real Homes WP Theme',
-    Status: 'Pendente',
+    Status: 'pendente',
     Image:
       avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Budget: '$24.5k',
+    Budget: 24500,
     Location: 'USA',
   },
   {
@@ -331,12 +331,12 @@ export const customersData:CustomersDataType = [
     Name: 'Christopher Jamil',
     Email: 'jamil@gmail.com',
     ProjectName: 'MedicalPro WP Theme',
-    Status: 'Completado',
+    Status: 'completo',
     Image:
       avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -345,12 +345,12 @@ export const customersData:CustomersDataType = [
     Name: 'Michael',
     Email: 'michael@gmail.com',
     ProjectName: 'Weekly WP Theme',
-    Status: 'Cancelado',
+    Status: 'cancelado',
     Image:
       avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -360,10 +360,10 @@ export const customersData:CustomersDataType = [
     Image:
       avatar2,
     ProjectName: 'Hosting Press HTML',
-    Status: 'Ativo',
+    Status: 'ativo',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Budget: '$2.4k',
+    Budget: 2400,
     Location: 'India',
   },
   {
@@ -372,13 +372,13 @@ export const customersData:CustomersDataType = [
     Name: 'Sunil Joshi',
     Email: 'sunil@gmail.com',
     ProjectName: 'Elite Admin',
-    Status: 'Ativo',
+    Status: 'ativo',
     Image:
       avatar3,
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Budget: '$3.9k',
+    Budget: 3900,
     Location: 'India',
   },
   {
@@ -387,12 +387,12 @@ export const customersData:CustomersDataType = [
     Name: 'Andrew McDownland',
     Email: 'andrew@gmail.com',
     ProjectName: 'Real Homes WP Theme',
-    Status: 'Pendente',
+    Status: 'pendente',
     Image:
       avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Budget: '$24.5k',
+    Budget: 24500,
     Location: 'USA',
   },
   {
@@ -401,12 +401,12 @@ export const customersData:CustomersDataType = [
     Name: 'Christopher Jamil',
     Email: 'jamil@gmail.com',
     ProjectName: 'MedicalPro WP Theme',
-    Status: 'Completado',
+    Status: 'completo',
     Image:
       avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -415,12 +415,12 @@ export const customersData:CustomersDataType = [
     Name: 'Michael',
     Email: 'michael@gmail.com',
     ProjectName: 'Weekly WP Theme',
-    Status: 'Cancelado',
+    Status: 'cancelado',
     Image:
       avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -430,10 +430,10 @@ export const customersData:CustomersDataType = [
     Image:
       avatar2,
     ProjectName: 'Hosting Press HTML',
-    Status: 'Ativo',
+    Status: 'ativo',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Budget: '$2.4k',
+    Budget: 2400,
     Location: 'India',
   },
   {
@@ -442,13 +442,13 @@ export const customersData:CustomersDataType = [
     Name: 'Sunil Joshi',
     Email: 'sunil@gmail.com',
     ProjectName: 'Elite Admin',
-    Status: 'Ativo',
+    Status: 'ativo',
     Image:
       avatar3,
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Budget: '$3.9k',
+    Budget: 3900,
     Location: 'India',
   },
   {
@@ -457,12 +457,12 @@ export const customersData:CustomersDataType = [
     Name: 'Andrew McDownland',
     Email: 'andrew@gmail.com',
     ProjectName: 'Real Homes WP Theme',
-    Status: 'Pendente',
+    Status: 'pendente',
     Image:
       avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Budget: '$24.5k',
+    Budget: 24500,
     Location: 'USA',
   },
   {
@@ -471,12 +471,12 @@ export const customersData:CustomersDataType = [
     Name: 'Christopher Jamil',
     Email: 'jamil@gmail.com',
     ProjectName: 'MedicalPro WP Theme',
-    Status: 'Completado',
+    Status: 'completo',
     Image:
       avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -485,12 +485,12 @@ export const customersData:CustomersDataType = [
     Name: 'Michael',
     Email: 'michael@gmail.com',
     ProjectName: 'Weekly WP Theme',
-    Status: 'Cancelado',
+    Status: 'cancelado',
     Image:
       avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -500,10 +500,10 @@ export const customersData:CustomersDataType = [
     Image:
       avatar2,
     ProjectName: 'Hosting Press HTML',
-    Status: 'Ativo',
+    Status: 'ativo',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Budget: '$2.4k',
+    Budget: 2400,
     Location: 'India',
   },
   {
@@ -512,13 +512,13 @@ export const customersData:CustomersDataType = [
     Name: 'Sunil Joshi',
     Email: 'sunil@gmail.com',
     ProjectName: 'Elite Admin',
-    Status: 'Ativo',
+    Status: 'ativo',
     Image:
       avatar3,
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Budget: '$3.9k',
+    Budget: 3900,
     Location: 'India',
   },
   {
@@ -527,12 +527,12 @@ export const customersData:CustomersDataType = [
     Name: 'Andrew McDownland',
     Email: 'andrew@gmail.com',
     ProjectName: 'Real Homes WP Theme',
-    Status: 'Pendente',
+    Status: 'pendente',
     Image:
       avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Budget: '$24.5k',
+    Budget: 24500,
     Location: 'USA',
   },
   {
@@ -540,12 +540,12 @@ export const customersData:CustomersDataType = [
     Name: 'Christopher Jamil',
     Email: 'jamil@gmail.com',
     ProjectName: 'MedicalPro WP Theme',
-    Status: 'Completado',
+    Status: 'completo',
     Image:
       avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
   {
@@ -553,12 +553,12 @@ export const customersData:CustomersDataType = [
     Name: 'Michael',
     Email: 'michael@gmail.com',
     ProjectName: 'Weekly WP Theme',
-    Status: 'Cancelado',
+    Status: 'cancelado',
     Image:
       avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Budget: '$16.5k',
+    Budget: 16500,
     Location: 'USA',
   },
 

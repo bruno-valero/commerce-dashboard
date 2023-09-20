@@ -2,60 +2,21 @@
 import { GoDotFill } from 'react-icons/go';
 
 import Button from '@/components/Button';
-import { earningData } from '@/data/dummyTSX';
+import EaringData from './components/EaringData/index';
 import SparkLineRevenueChart from './components/SparkLineRevenueChart';
 import StackedRevenueChart from './components/StackedRevenueChart';
+import TotalEarnings from './components/TotalEarings/index';
 import TotalRevenue from './components/TotalRevenue';
-import negativeAndPositiveColor from './functions/negativeAndPositiveColor';
 
 export default function Home() {
   return (
     <div className='mt-12'>
       <div className="flex flex-wrap justify-center">
         {/* Earnings sections (with the background image) */}
-        <div className="dark:text-gray-200 dark:bg-blue-950 h-44 rounded-xl w-full max-sm:w-[80%] max-md:w-[70%] max-lg:w-[65%] lg:w-[85%] xl:w-[45%] p-8 pt-9 m-3 bg-no-repeat bg-cover bg-center bg-[url('/data/welcome-bg.svg')]">
-          <div className='flex justify-between items-center'>
-            <div>
-              <p className='font-bold textgray-400'>Ganhos</p>
-              <p className='text-xl'>63,448.78</p>
-              <div className='mt-6'>
-                <Button 
-                bgColor='bg-blue-900 dark:bg-white' 
-                color='text-white dark:text-blue-900'
-                size={'text-md'} 
-                text={'Download'} 
-                borderRadius={'rounded-[10px]'}
-                className='px-3 py-1'
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        <TotalEarnings />
         {/* cards section */}
-        <div className="flex m-3 flex-wrap justify-center gap-1 items-center">
-          {earningData.map(item => (
-            <div 
-            key={item.title} 
-            className="flex flex-col justify-center items-center bg-white dark:text-gray-200 dark:bg-blue-900 md:w-56 p-4 pt-9 rounded-2xl">
-              <button 
-              type='button' 
-              style={{color: item.iconColor, backgroundColor: item.iconBg}}
-              className='flex m-auto text-2xl opacity-0.9 rounded-full p-4 hover:drop-shadow-xl dark:hover:shadow-md dark:hover:shadow-gray-200'
-              >
-                {item.icon}
-              </button>
-              <p className="mt-3">
-                <span className="text-lg font-semibold">
-                  {item.amount}
-                </span>
-                <span style={{color: negativeAndPositiveColor({num:item.percentage, model: '${num}%'})}} className={`text-s ml-2`}>
-                  {item.percentage}
-                </span>
-              </p>
-              <p>{item.title}</p>
-            </div>
-          ))}
-        </div>  
+        <EaringData />  
+        
       </div>
           {/* Grafcs section */}
       <div className='flex gap-10 flex-wrap justify-center mr-10'>

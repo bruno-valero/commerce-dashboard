@@ -35,11 +35,11 @@ export const gridOrderStatus = (props:OrdersDataItemType) => {
   const status = props.Status;
 
   const colors = {
-    complete: '#8BE78B',
-    pending: '#FB9678',
-    active: '#03C9D7',
-    canceled: '#FF5C8E',
-    rejected: 'red',
+    pendente: '#8BE78B',
+    completo: '#FB9678',
+    ativo: '#03C9D7',
+    cancelado: '#FF5C8E',
+    rejeitado: 'red',
   }
   return (
     <button
@@ -49,5 +49,14 @@ export const gridOrderStatus = (props:OrdersDataItemType) => {
     >
       {status}
     </button>
+  );
+};
+
+export const gridOrderAmount = (props:OrdersDataItemType) => {
+
+  return (
+    <p>
+      ${props.TotalAmount}
+    </p>
   );
 };

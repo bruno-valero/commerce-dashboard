@@ -10,7 +10,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 32.38,
     Name: 'Fresh Tomato',
     Location: 'USA',
-    Status: 'pending',
+    Status: 'pendente',
     StatusBg: '#FB9678',
     Image:
       product6,
@@ -21,7 +21,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 56.34,
     Name: 'Butter Scotch',
     Location: 'Delhi',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       product5,
@@ -32,7 +32,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 93.31,
     Name: 'Candy Gucci',
     Location: 'New York',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       product7,
@@ -43,7 +43,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 93.31,
     Name: 'Night Lamp',
     Location: 'Germany',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       product4,
@@ -54,7 +54,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 23.99,
     Name: 'Healthcare Erbology',
     Location: 'Spain',
-    Status: 'rejected',
+    Status: 'rejeitado',
     StatusBg: 'red',
     Image:
     product1,
@@ -65,7 +65,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 95.99,
     Name: 'Makeup Lancome Rouge',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       product2,
@@ -76,7 +76,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 17.99,
     Name: 'Skincare',
     Location: 'USA',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       product3,
@@ -87,7 +87,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 59.99,
     Name: 'Headphone',
     Location: 'USA',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       product4,
@@ -98,7 +98,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 87.99,
     Name: 'Shoes',
     Location: 'USA',
-    Status: 'pending',
+    Status: 'pendente',
     StatusBg: '#FB9678',
     Image:
       'https://cdn.shopclues.com/images1/thumbnails/104158/320/320/148648730-104158193-1592481791.jpg',
@@ -109,7 +109,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 122.99,
     Name: 'Watch',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*',
@@ -120,7 +120,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 87.99,
     Name: 'Ice Cream',
     Location: 'USA',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/dairy-free-ice-cream-eae372d.jpg',
@@ -131,7 +131,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 84.99,
     Name: 'Pan Cake',
     Location: 'Delhi',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80',
@@ -142,7 +142,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 122.99,
     Name: 'Watch',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*',
@@ -154,7 +154,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 32.38,
     Name: 'Fresh Tomato',
     Location: 'USA',
-    Status: 'pending',
+    Status: 'pendente',
     StatusBg: '#FB9678',
     Image:
       product6,
@@ -165,7 +165,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 56.34,
     Name: 'Butter Scotch',
     Location: 'Delhi',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       product5,
@@ -176,7 +176,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 93.31,
     Name: 'Candy Gucci',
     Location: 'New York',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       product7,
@@ -187,7 +187,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 93.31,
     Name: 'Night Lamp',
     Location: 'Germany',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       product4,
@@ -198,7 +198,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 23.99,
     Name: 'Healthcare Erbology',
     Location: 'Spain',
-    Status: 'rejected',
+    Status: 'rejeitado',
     StatusBg: 'red',
     Image:
       product1,
@@ -209,7 +209,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 95.99,
     Name: 'Makeup Lancome Rouge',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       product2,
@@ -220,7 +220,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 17.99,
     Name: 'Skincare',
     Location: 'USA',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       product3,
@@ -231,7 +231,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 59.99,
     Name: 'Headphone',
     Location: 'USA',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       product4,
@@ -242,7 +242,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 87.99,
     Name: 'Shoes',
     Location: 'USA',
-    Status: 'pending',
+    Status: 'pendente',
     StatusBg: '#FB9678',
     Image:
       'https://cdn.shopclues.com/images1/thumbnails/104158/320/320/148648730-104158193-1592481791.jpg',
@@ -253,7 +253,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 122.99,
     Name: 'Watch',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*',
@@ -264,7 +264,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 87.99,
     Name: 'Ice Cream',
     Location: 'USA',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/dairy-free-ice-cream-eae372d.jpg',
@@ -275,7 +275,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 84.99,
     Name: 'Pan Cake',
     Location: 'Delhi',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80',
@@ -286,7 +286,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 122.99,
     Name: 'Watch',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*',
@@ -298,7 +298,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 32.38,
     Name: 'Fresh Tomato',
     Location: 'USA',
-    Status: 'pending',
+    Status: 'pendente',
     StatusBg: '#FB9678',
     Image:
       product6,
@@ -309,7 +309,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 56.34,
     Name: 'Butter Scotch',
     Location: 'Delhi',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       product5,
@@ -320,7 +320,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 93.31,
     Name: 'Candy Gucci',
     Location: 'New York',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       product7,
@@ -331,7 +331,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 93.31,
     Name: 'Night Lamp',
     Location: 'Germany',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       product4,
@@ -342,7 +342,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 23.99,
     Name: 'Healthcare Erbology',
     Location: 'Spain',
-    Status: 'rejected',
+    Status: 'rejeitado',
     StatusBg: 'red',
     Image:
       product1,
@@ -353,7 +353,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 95.99,
     Name: 'Makeup Lancome Rouge',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       product2,
@@ -364,7 +364,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 17.99,
     Name: 'Skincare',
     Location: 'USA',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       product3,
@@ -375,7 +375,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 59.99,
     Name: 'Headphone',
     Location: 'USA',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       product4,
@@ -386,7 +386,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 87.99,
     Name: 'Shoes',
     Location: 'USA',
-    Status: 'pending',
+    Status: 'pendente',
     StatusBg: '#FB9678',
     Image:
       'https://cdn.shopclues.com/images1/thumbnails/104158/320/320/148648730-104158193-1592481791.jpg',
@@ -397,7 +397,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 122.99,
     Name: 'Watch',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*',
@@ -408,7 +408,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 87.99,
     Name: 'Ice Cream',
     Location: 'USA',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/dairy-free-ice-cream-eae372d.jpg',
@@ -419,7 +419,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 84.99,
     Name: 'Pan Cake',
     Location: 'Delhi',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80',
@@ -430,7 +430,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 122.99,
     Name: 'Watch',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*',
@@ -442,7 +442,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 32.38,
     Name: 'Fresh Tomato',
     Location: 'USA',
-    Status: 'pending',
+    Status: 'pendente',
     StatusBg: '#FB9678',
     Image:
       product6,
@@ -453,7 +453,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 56.34,
     Name: 'Butter Scotch',
     Location: 'Delhi',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       product5,
@@ -464,7 +464,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 93.31,
     Name: 'Candy Gucci',
     Location: 'New York',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       product7,
@@ -475,7 +475,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 93.31,
     Name: 'Night Lamp',
     Location: 'Germany',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       product4,
@@ -486,7 +486,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 23.99,
     Name: 'Healthcare Erbology',
     Location: 'Spain',
-    Status: 'rejected',
+    Status: 'rejeitado',
     StatusBg: 'red',
     Image:
       product1,
@@ -497,7 +497,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 95.99,
     Name: 'Makeup Lancome Rouge',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       product2,
@@ -508,7 +508,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 17.99,
     Name: 'Skincare',
     Location: 'USA',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       product3,
@@ -519,7 +519,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 59.99,
     Name: 'Headphone',
     Location: 'USA',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       product4,
@@ -530,7 +530,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 87.99,
     Name: 'Shoes',
     Location: 'USA',
-    Status: 'pending',
+    Status: 'pendente',
     StatusBg: '#FB9678',
     Image:
       'https://cdn.shopclues.com/images1/thumbnails/104158/320/320/148648730-104158193-1592481791.jpg',
@@ -541,7 +541,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 122.99,
     Name: 'Watch',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*',
@@ -552,7 +552,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 87.99,
     Name: 'Ice Cream',
     Location: 'USA',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/dairy-free-ice-cream-eae372d.jpg',
@@ -563,7 +563,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 84.99,
     Name: 'Pan Cake',
     Location: 'Delhi',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80',
@@ -574,7 +574,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 122.99,
     Name: 'Watch',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*',
@@ -586,7 +586,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 32.38,
     Name: 'Fresh Tomato',
     Location: 'USA',
-    Status: 'pending',
+    Status: 'pendente',
     StatusBg: '#FB9678',
     Image:
       product6,
@@ -597,7 +597,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 56.34,
     Name: 'Butter Scotch',
     Location: 'Delhi',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       product5,
@@ -608,7 +608,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 93.31,
     Name: 'Candy Gucci',
     Location: 'New York',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       product7,
@@ -619,7 +619,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 93.31,
     Name: 'Night Lamp',
     Location: 'Germany',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       product4,
@@ -630,7 +630,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 23.99,
     Name: 'Healthcare Erbology',
     Location: 'Spain',
-    Status: 'rejected',
+    Status: 'rejeitado',
     StatusBg: 'red',
     Image:
       product1,
@@ -641,7 +641,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 95.99,
     Name: 'Makeup Lancome Rouge',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       product2,
@@ -652,7 +652,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 17.99,
     Name: 'Skincare',
     Location: 'USA',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       product3,
@@ -663,7 +663,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 59.99,
     Name: 'Headphone',
     Location: 'USA',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       product4,
@@ -674,7 +674,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 87.99,
     Name: 'Shoes',
     Location: 'USA',
-    Status: 'pending',
+    Status: 'pendente',
     StatusBg: '#FB9678',
     Image:
       'https://cdn.shopclues.com/images1/thumbnails/104158/320/320/148648730-104158193-1592481791.jpg',
@@ -685,7 +685,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 122.99,
     Name: 'Watch',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*',
@@ -696,7 +696,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 87.99,
     Name: 'Ice Cream',
     Location: 'USA',
-    Status: 'active',
+    Status: 'ativo',
     StatusBg: '#03C9D7',
     Image:
       'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/dairy-free-ice-cream-eae372d.jpg',
@@ -707,7 +707,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 84.99,
     Name: 'Pan Cake',
     Location: 'Delhi',
-    Status: 'complete',
+    Status: 'completo',
     StatusBg: '#8BE78B',
     Image:
       'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80',
@@ -718,7 +718,7 @@ export const ordersData:OrdersDataType = [
     TotalAmount: 122.99,
     Name: 'Watch',
     Location: 'USA',
-    Status: 'canceled',
+    Status: 'cancelado',
     StatusBg: '#FF5C8E',
     Image:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*',

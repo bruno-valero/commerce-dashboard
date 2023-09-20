@@ -1,5 +1,5 @@
 import { GridType } from '../types';
-import { customerGridImage, customerGridStatus } from './components';
+import { customerGridBudget, customerGridImage, customerGridStatus } from './components';
 
 export const customersGrid:GridType = [
 
@@ -43,7 +43,9 @@ export const customersGrid:GridType = [
   { field: 'Budget',
     headerText: 'Budget',
     width: '100',
-    format: 'yMd',
+    format: 'C2',
+    template: customerGridBudget,
+    editType: 'numericedit',
     textAlign: 'Center' },
 
   { field: 'Location',
