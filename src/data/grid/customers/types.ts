@@ -8,10 +8,10 @@ export type CustomersDataItemType = {
   Email: string,
   Image: StaticImageData | string,
   ProjectName: string,
-  Status: string,
+  Status: 'pendente' | 'completo' | 'ativo' | 'cancelado',
   StatusBg: string,
   Weeks: string,
-  Budget: string,
+  Budget: number,
   Location: string,
 } & RegisteredDomains;
 

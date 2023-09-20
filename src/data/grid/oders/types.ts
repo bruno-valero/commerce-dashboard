@@ -9,7 +9,7 @@ export type OrdersDataItemType = {
   TotalAmount: number,
   Name: string,
   Location: string,
-  Status: 'pending' | 'complete' | 'active' | 'canceled' | 'rejected' ,
+  Status: 'pendente' | 'completo' | 'ativo' | 'cancelado' | 'rejeitado' ,
   StatusBg: string,
   Image: StaticImageData | string,
 } & RegisteredDomains;

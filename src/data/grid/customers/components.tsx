@@ -1,3 +1,4 @@
+import { Obj } from '@/common.types';
 import Image from 'next/image';
 import { BiSolidUserCircle } from 'react-icons/bi';
 import { EmployeesDataItemType } from '../employees/types';
@@ -44,5 +45,21 @@ export const customerGridStatus = (props:CustomersDataItemType) => {
       <div style={{backgroundColor: colors[status]}} className={`p-1 rounded-full`} />
       <p>{status}</p>
     </div>
+  );
+};
+
+export const customerGridBudget = (props:CustomersDataItemType) => {
+  const budget = props.Budget;
+  const text = {} as Obj<any>;
+  if (budget < 100) {
+    text.mask = `$${budget},00`;
+  } else {
+    text.mask = `$${(budget / 1000).toFixed(1)}K`;
+  }
+  return (
+      <p>
+        {text.mask}
+      </p>
+
   );
 };

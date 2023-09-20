@@ -4,6 +4,7 @@
 // -----------------------------------------------------
 
 import { InsertRegisteredDomainsReturnType } from '@/app/functions/insertRegisteredDomains';
+import { LastYearReport } from '@/app/functions/makeEaringData';
 import { Envs } from '@/app/layout';
 import { EarningDataType, RevenueReport, ScheduleDataType } from '@/common.types';
 import { UseState } from '@/contexts/types';
@@ -30,10 +31,12 @@ export type GlobalContextStates = PathnameState & ChatState & CartState & UserPr
 export type CustomerState = {grid: GridType, data: InsertRegisteredDomainsReturnType<CustomersDataItemType>};
 export type OrderState = {grid: GridType, data: InsertRegisteredDomainsReturnType<OrdersDataItemType>};
 export type EmployeeState = {grid: GridType, data: InsertRegisteredDomainsReturnType<EmployeesDataItemType>};
-export type FinancesState = { earning: EarningDataType, revenueReport: RevenueReport };
+export type FinancesState = { earning: EarningDataType, revenueReport: RevenueReport, lastYearReport:UseState<LastYearReport> };
 export type ScheduleState = {data: ScheduleDataType};
 export type BaseURLState = string;
 export type EnvsState = Envs;
+
+
 
 export type CustomerDataState = {customers: CustomerState}
 export type OrderDataState = {orders: OrderState}

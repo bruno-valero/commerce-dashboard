@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { ReactNode, useState } from 'react';
 import GlobalContext from './GlobalContext';
 
+import { LastYearReport } from '@/app/functions/makeEaringData';
 import { Envs, FetchDataState } from '@/app/layout';
 import { UseState } from '@/contexts/types';
 import { customersGrid } from '@/data/grid/customers/model';
@@ -33,6 +34,11 @@ export default function GlobalProvider({ children, syncfusionRegisterLicence, gl
   const [activeMenu, setActiveMenu]:UseState<boolean> = useState<boolean>(true);
   const [screenSize, setScreenSize]:UseState<number> = useState<number>(300);
   const [notRegisteredDomain, setNotRegisteredDomain]:UseState<boolean> = useState<boolean>(false);
+  const [lastYearReport, setLastYearReport]:UseState<LastYearReport> = useState<LastYearReport>({
+    customerProfit:100000,
+    ordersProfit:1800,
+    ordersExpense:1480,
+  });
   
   const [data, setData] = useState<DataState>({
     customers: {grid: customersGrid, data: globalData.customers.data},
@@ -41,6 +47,7 @@ export default function GlobalProvider({ children, syncfusionRegisterLicence, gl
     finances: {
       earning: globalData.finances.earning,
       revenueReport: globalData.finances.revenueReport,
+      lastYearReport: [lastYearReport, setLastYearReport],
     },
     schedule: {data: globalData.schedule.data},
     baseURL: globalData.baseURL,
