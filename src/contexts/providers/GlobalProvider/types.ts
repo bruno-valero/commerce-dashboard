@@ -12,6 +12,7 @@ import { CustomersDataItemType } from '@/data/grid/customers/types';
 import { EmployeesDataItemType } from '@/data/grid/employees/types';
 import { OrdersDataItemType } from '@/data/grid/oders/types';
 import { GridType } from '@/data/grid/types';
+import { KanbanDataType, KanbanGridType } from '@/data/kanan/types';
 
 // GlobalState Fields
 export type PathnameState = {pathname: string};
@@ -33,6 +34,7 @@ export type OrderState = {grid: GridType, data: InsertRegisteredDomainsReturnTyp
 export type EmployeeState = {grid: GridType, data: InsertRegisteredDomainsReturnType<EmployeesDataItemType>};
 export type FinancesState = { earning: EarningDataType, revenueReport: RevenueReport, lastYearReport:UseState<LastYearReport> };
 export type ScheduleState = {data: ScheduleDataType};
+export type KanbanState = {grid: KanbanGridType, data: KanbanDataType};
 export type BaseURLState = string;
 export type EnvsState = Envs;
 
@@ -43,6 +45,7 @@ export type OrderDataState = {orders: OrderState}
 export type EmployeeDataState = {employees: EmployeeState}
 export type FinancesDataState = {finances: FinancesState}
 export type ScheduleDataState = {schedule: ScheduleState}
+export type KanbanDataState = {kanban: KanbanState}
 export type BaseURLDataState = {baseURL: BaseURLState}
 export type EnvsDataState = {envs: EnvsState}
 
@@ -52,6 +55,7 @@ OrderDataState &
 EmployeeDataState & 
 FinancesDataState & 
 ScheduleDataState & 
+KanbanDataState & 
 BaseURLDataState &
 EnvsDataState;
 

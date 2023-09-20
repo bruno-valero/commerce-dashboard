@@ -1,7 +1,7 @@
 import { avatar, avatar2, avatar3, avatar4 } from '../../imageLinks';
 import { EmployeesDataType } from './types';
 
-
+Math.random()
 export const employeesData:EmployeesDataType = [
   {
     Id: 1,
