@@ -38,3 +38,69 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* kanban component */
+.e-kanban {
+  @apply dark:bg-gray-800 bg-white rounded-lg
+}
+
+/* kanban cards wrapper */
+.e-kanban .e-kanban-table.e-content-table .e-content-row:not(.e-swimlane-row) td {
+  @apply dark:bg-gray-600 bg-gray-200 rounded-lg max-h-4
+}
+
+/* kanban titles wrapper */
+.e-kanban .e-kanban-table .e-header-cells  {
+  @apply dark:bg-gray-600 dark:text-white bg-gray-200 text-white
+}
+
+/* Titulo das colunas */
+.e-kanban .e-kanban-table .e-header-cells .e-header-text  {
+  @apply  dark:text-white text-black
+}
+
+/* Quantidade de itens ao lado do titulo */
+.e-kanban .e-kanban-table .e-header-cells .e-item-count  {
+  @apply  dark:text-gray-200 text-gray-800
+}
+
+/* kanban titles wrapper closed */
+.e-kanban .e-kanban-header .e-header-cells.e-collapsed {
+  @apply dark:bg-gray-600 dark:text-white bg-gray-200 text-white
+}
+
+/* indicativo quando a coluna estiver fechada */
+.e-kanban .e-kanban-content .e-content-row .e-content-cells.e-collapsed .e-collapse-header-text  {
+  @apply  dark:text-gray-200 text-gray-800
+}
+
+/* wrapper dos titulos e dos wrappers dos cards */
+.e-kanban .e-kanban-table {
+  @apply mt-2
+};
+
+.custom-kanban-card{
+  @apply dark:bg-gray-500 bg-white p-5 rounded-lg
+}
+
+.custom-kanban-card-title{
+  @apply dark:text-white text-black
+}
+
+.custom-kanban-card-summary{
+  @apply dark:text-gray-200 text-gray-800
+}
+
+/* .e-header-title div {
+  @apply w-[100%]
+}; */
+
+
+
+/* dropdown */
+.e-input-group:not(.e-success):not(.e-warning):not(.e-error):not(.e-float-icon-left), .e-input-group.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-input-group.e-control-wrapper:not(.e-success):not(.e-warning):not(.e-error):not(.e-float-icon-left), .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-float-input.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-float-input.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap {
+  @apply w-full rounded-lg px-3 py-2 dark:bg-gray-500 bg-gray-200 dark:text-white dark:placeholder:text-gray-200 text-black
+}
+/* .dropdown-kanban {
+  @apply w-full rounded-lg px-3 py-2 dark:bg-gray-500 bg-gray-200 dark:text-white dark:placeholder:text-gray-200 text-black
+} */
