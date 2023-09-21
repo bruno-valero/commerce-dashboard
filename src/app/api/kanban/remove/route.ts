@@ -1,4 +1,4 @@
-import { GridsDataItemTypes } from '@/data/grid/types';
+import { KanbanDataItemType } from '@/data/kanan/types';
 import { SendAuthPostRequest } from '@/dataFetching/types';
 import { redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
@@ -12,11 +12,11 @@ export async function GET(req:Request):Promise<void> {
 };
 
 export async function POST(req:Request):Promise<NextResponse<ResponseKanbanRemove>> {
-  const { body:remove, id, user } = (await req.json() as SendAuthPostRequest<Array<GridsDataItemTypes>>);
+  const { body:remove, id, user } = (await req.json() as SendAuthPostRequest<Array<KanbanDataItemType>>);
   if (!remove) return NextResponse.json({ error:'Está faltando o body da requisição' });
   console.log('data on kanban remove Post', remove);
   return NextResponse.json({ remove });
 };
 
-export type ResponseKanbanRemoveOk = { remove: Array<GridsDataItemTypes> };
+export type ResponseKanbanRemoveOk = { remove: Array<KanbanDataItemType> };
 export type ResponseKanbanRemove = ResponseKanbanRemoveOk | RequestError;

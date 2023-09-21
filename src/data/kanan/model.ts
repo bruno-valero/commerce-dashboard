@@ -1,22 +1,21 @@
 import { KanbanGridType } from './types';
 
-
 export const kanbanGrid:KanbanGridType = [
-  { headerText: 'To Do',
-    keyField: 'Open',
+  { headerText: 'A Fazer',
+    keyField: 'Pendente',
     allowToggle: true,
   },
 
-  { headerText: 'In Progress',
-    keyField: 'InProgress',
+  { headerText: 'Em progresso',
+    keyField: 'EmProgresso',
     allowToggle: true },
 
-  { headerText: 'Testing',
-    keyField: 'Testing',
+  { headerText: 'Testando',
+    keyField: 'Revisar',
     allowToggle: true,
     isExpanded: false },
 
-  { headerText: 'Done',
-    keyField: 'Close',
+  { headerText: 'Concluído',
+    keyField: 'Terminado',
     allowToggle: true },
 ];
