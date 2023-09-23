@@ -128,7 +128,7 @@ async function gridCRUDRequest ({ data, url, setInfo, gridType, baseURL, setGlob
     console.log('setando info', setInfo);
     let storageData:Array<GridsDataItemTypes> = [];
     try {
-      storageData = (gridType === 'customers' ? customersData : gridType === 'employees' ? employeesData : ordersData) as Array<GridsDataItemTypes>;
+      storageData = JSON.parse(localStorage.getItem(gridType) ?? '[]')
     } catch(e) {
       storageData = (gridType === 'customers' ? customersData : gridType === 'employees' ? employeesData : ordersData) as Array<GridsDataItemTypes>;
     };
@@ -194,14 +194,14 @@ export default async function gridActionComplete({ event, setNotRegisteredDomain
       if (isObjectKeysNullish({ obj:dataWthoutID })) {
         // busca do local storage
         // const response = insertRegisteredDomains(JSON.parse(localStorage.getItem(gridType) ?? '[]'), registeredDomains) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>;
-        const response = insertRegisteredDomains((gridType === 'customers' ? customersData : gridType === 'employees' ? employeesData : ordersData) as Array<GridsDataItemTypes>, registeredDomains) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>;
+        const response = insertRegisteredDomains(JSON.parse(localStorage.getItem(gridType) ?? '[]') as Array<GridsDataItemTypes>, registeredDomains) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>;
         setGlobalData(prev => ({...prev, [gridType]:{...prev[gridType], data:response}}));
         return alert('Insira todos os campos');
       } else 
       if ((addAction && !data['Id'])) {
         // busca do local storage
-        // const response = insertRegisteredDomains(JSON.parse(localStorage.getItem(gridType) ?? '[]'), registeredDomains) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>;
-        const response = insertRegisteredDomains((gridType === 'customers' ? customersData : gridType === 'employees' ? employeesData : ordersData) as Array<GridsDataItemTypes>, registeredDomains) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>;
+        const response = insertRegisteredDomains(JSON.parse(localStorage.getItem(gridType) ?? '[]'), registeredDomains) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>;
+        // const response = insertRegisteredDomains((gridType === 'customers' ? customersData : gridType === 'employees' ? employeesData : ordersData) as Array<GridsDataItemTypes>, registeredDomains) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>;
         console.log('response on create grid', response);
         
         const graterID:number = Math.max(...response.map(item => item.Id));

@@ -41,7 +41,7 @@ export default async function onUpdateKanban({data, setInfo, baseURL, setGlobalD
     
     let storageData = [];
     try {
-      storageData = kanbanData
+      storageData = JSON.parse(localStorage.getItem('kanban') ?? '[]')
     } catch(e) {
       storageData = kanbanData;
     };

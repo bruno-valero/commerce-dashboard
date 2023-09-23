@@ -60,7 +60,7 @@ export default async function send({ changes, baseURL, setGlobalData, setChanges
 
   let storageData = [];
     try {
-      storageData = kanbanData
+      storageData = JSON.parse(localStorage.getItem('kanban') ?? '[]')
     } catch(e) {
       storageData = kanbanData;
     };
