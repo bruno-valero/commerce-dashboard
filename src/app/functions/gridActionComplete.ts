@@ -2,6 +2,9 @@ import { nullish, Obj } from '@/common.types';
 import { DataState } from '@/contexts/providers/GlobalProvider/types';
 import { Info } from '@/contexts/providers/InfoProvider/types';
 import { SetState } from '@/contexts/types';
+import { customersData } from '@/data/grid/customers/data';
+import { employeesData } from '@/data/grid/employees/data';
+import { ordersData } from '@/data/grid/oders/data';
 import { GridsDataItemTypes } from '@/data/grid/types';
 import fetchAuthJson from '@/dataFetching/fetchAuthJson';
 import { FetchAuthInit } from '@/dataFetching/types';
@@ -123,7 +126,12 @@ async function gridCRUDRequest ({ data, url, setInfo, gridType, baseURL, setGlob
     }
     const text = texts[reqTypeFiltered];
     console.log('setando info', setInfo);
-    const storageData = JSON.parse(localStorage.getItem(gridType) ?? `[]`) as Array<GridsDataItemTypes>;
+    let storageData:Array<GridsDataItemTypes> = [];
+    try {
+      storageData = JSON.parse(localStorage.getItem(gridType) ?? `[]`);
+    } catch(e) {
+      storageData = (gridType === 'customers' ? customersData : gridType === 'employees' ? employeesData : ordersData) as Array<GridsDataItemTypes>;
+    };
     console.log('storageData', storageData);
     console.log('newData', newData);
     console.log('storageData + newData', [...newData,...storageData]);

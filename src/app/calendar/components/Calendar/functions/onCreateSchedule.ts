@@ -4,6 +4,7 @@ import { ScheduleDataItemType } from '@/common.types';
 import { BaseURLDataState, DataState } from '@/contexts/providers/GlobalProvider/types';
 import { Info } from '@/contexts/providers/InfoProvider/types';
 import { SetState } from '@/contexts/types';
+import { scheduleData } from '@/data/dummyTSX';
 import fetchAuthJson from '@/dataFetching/fetchAuthJson';
 import getSchedule from '@/dataFetching/getSchedule';
 import { FetchAuthInit } from '@/dataFetching/types';
@@ -43,7 +44,12 @@ export default async function onCreateSchedule({data, setInfo, baseURL, setGloba
     const subject = !oneItem ? 'Itens' : responseData.create[0].Subject;
     const text = !oneItem ? `${subject} criados com sucesso!` : `${subject} criado com sucesso!`;
     
-    const storageData = JSON.parse(localStorage.getItem('schedule') ?? `[]`)
+    let storageData = [];
+    try {
+      storageData = JSON.parse(localStorage.getItem('schedule') ?? `[]`);
+    } catch(e) {
+      storageData = scheduleData
+    };
     const change = createObjectArray(storageData, responseData.create);
     localStorage.setItem('schedule', JSON.stringify(change));
     
