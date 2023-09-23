@@ -41,7 +41,7 @@ export default async function onRemoveKanban({data, setInfo, baseURL, setGlobalD
 
     let storageData = [];
     try {
-      storageData = JSON.parse(localStorage.getItem('kanban') ?? `[]`);
+      storageData = kanbanData
     } catch(e) {
       storageData = kanbanData;
     };

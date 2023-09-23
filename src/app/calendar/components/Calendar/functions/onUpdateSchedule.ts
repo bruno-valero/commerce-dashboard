@@ -46,7 +46,7 @@ export default async function onUpdateSchedule({data, setInfo, baseURL, setGloba
     
     let storageData = [];
     try {
-      storageData = JSON.parse(localStorage.getItem('schedule') ?? `[]`);
+      storageData = scheduleData
     } catch(e) {
       storageData = scheduleData
     };
