@@ -3,6 +3,7 @@ import { RequestError } from '@/app/api/types';
 import { BaseURLDataState, DataState } from '@/contexts/providers/GlobalProvider/types';
 import { Info } from '@/contexts/providers/InfoProvider/types';
 import { SetState } from '@/contexts/types';
+import { kanbanData } from '@/data/kanan/data';
 import { KanbanDataItemType } from '@/data/kanan/types';
 import fetchAuthJson from '@/dataFetching/fetchAuthJson';
 import getKanban from '@/dataFetching/getKanban';
@@ -38,7 +39,12 @@ export default async function onRemoveKanban({data, setInfo, baseURL, setGlobalD
     const title = !oneItem ? 'Itens' : responseData.remove[0].Title;
     const text = !oneItem ? `${title} removidos com sucesso!` : `${title} removido com sucesso!`;
 
-    const storageData = JSON.parse(localStorage.getItem('kanban') ?? `[]`);
+    let storageData = [];
+    try {
+      storageData = JSON.parse(localStorage.getItem('kanban') ?? `[]`);
+    } catch(e) {
+      storageData = kanbanData;
+    };
     const change = deleteObjectArray(storageData, responseData.remove, 'Id', 'Id');
     localStorage.setItem('kanban', JSON.stringify(change));
 

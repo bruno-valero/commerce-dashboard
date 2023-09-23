@@ -11,24 +11,6 @@ import AddItemDialog from './components/AddItemDialog/index';
 import CustomButton from './components/CustomButton';
 import onActionCompleteKanban from './functions/onActionCompleteKanban';
 
-// import { L10n, loadCldr } from '@syncfusion/ej2-base';
-// import pt from '@syncfusion/ej2-locale/src/pt.json';
-// import gregorian from 'cldr-data/main/pt/ca-gregorian.json';
-// import numbers from 'cldr-data/main/pt/numbers.json';
-// import timeZoneNames from 'cldr-data/main/pt/timeZoneNames.json';
-// import numberingSystems from 'cldr-data/supplemental/numberingSystems.json';
-
-// loadCldr(
-//   numberingSystems,
-//   gregorian,
-//   numbers,
-//   timeZoneNames,
-// );
-
-// pt.pt.schedule.save = 'Salvar';
-// pt.pt.schedule.saveButton = 'Salvar';
-// L10n.load(JSON.parse(JSON.stringify(pt)));
-
 interface KanbanCompProps {
 }
 
