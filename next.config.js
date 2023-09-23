@@ -3,6 +3,10 @@ const nextConfig = {
   images: {
     domains: process.env.REGISTERED_DOMAINS.split(',')
   },
+};
+
+module.exports = {
+  nextConfig,
   async headers() {
     return [
       {
@@ -18,8 +22,6 @@ const nextConfig = {
     ]
   }
 };
-
-module.exports = nextConfig;
 
 // [
 //   'cdn.shopclues.com', 
