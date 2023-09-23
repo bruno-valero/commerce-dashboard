@@ -7,10 +7,13 @@ import { EarningDataType, RevenueReport, ScheduleDataType } from '@/common.types
 import Menu from '@/components/Menu/index';
 import SettingsButton from '@/components/SettingsButton/index';
 import GlobalProvider from '@/contexts/providers/GlobalProvider';
-import { earningData, stackedChartData } from '@/data/dummyTSX';
-import { CustomersDataItemType } from '@/data/grid/customers/types';
-import { EmployeesDataItemType } from '@/data/grid/employees/types';
-import { OrdersDataItemType } from '@/data/grid/oders/types';
+import { earningData, scheduleData, stackedChartData } from '@/data/dummyTSX';
+import { customersData } from '@/data/grid/customers/data';
+import { CustomersDataItemType, CustomersDataType } from '@/data/grid/customers/types';
+import { employeesData } from '@/data/grid/employees/data';
+import { EmployeesDataItemType, EmployeesDataType } from '@/data/grid/employees/types';
+import { ordersData } from '@/data/grid/oders/data';
+import { OrdersDataItemType, OrdersDataType } from '@/data/grid/oders/types';
 import { KanbanDataType } from '@/data/kanan/types';
 import getCustomers from '@/dataFetching/getCustomers';
 import getEmployees from '@/dataFetching/getEmployees';
@@ -18,7 +21,7 @@ import getKanban from '@/dataFetching/getKanban';
 import getOrders from '@/dataFetching/getOrders';
 import getSchedule from '@/dataFetching/getSchedule';
 import { ReactNode } from 'react';
-import { InsertRegisteredDomainsReturnType } from './functions/insertRegisteredDomains';
+import insertRegisteredDomains, { InsertRegisteredDomainsReturnType } from './functions/insertRegisteredDomains';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -46,25 +49,42 @@ export default async function RootLayout({ children }:RootLayoutProps) {
     data: {id: '123456', user:'bruno'},
   };
 
-  const schedule:ScheduleDataType = await getSchedule({ baseURL, init:requesOptions});  
-  const customers = await getCustomers({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
-  const orders = await getOrders({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
-  const employees = await getEmployees({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
-  const kanban = await getKanban({ baseURL, init:requesOptions});
+  const dataItems:{
+    schedule?: ScheduleDataType,
+    customers?: CustomersDataType,
+    orders?: OrdersDataType,
+    employees?: EmployeesDataType,
+    kanban?: KanbanDataType,
+  } = {};
+  try {
+
+    dataItems['schedule'] = await getSchedule({ baseURL, init:requesOptions});  
+    dataItems['customers'] = await getCustomers({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
+    dataItems['orders'] = await getOrders({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
+    dataItems['employees'] = await getEmployees({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
+    dataItems['kanban'] = await getKanban({ baseURL, init:requesOptions});
+  } catch(e) {
+    // insertRegisteredDomains
+    dataItems['schedule'] = scheduleData;  
+    dataItems['customers'] = insertRegisteredDomains(customersData, process.env.REGISTERED_DOMAINS as string) as InsertRegisteredDomainsReturnType<CustomersDataItemType>;
+    dataItems['orders'] = insertRegisteredDomains(ordersData, process.env.REGISTERED_DOMAINS as string) as InsertRegisteredDomainsReturnType<OrdersDataItemType>;
+    dataItems['employees'] = insertRegisteredDomains(employeesData, process.env.REGISTERED_DOMAINS as string) as InsertRegisteredDomainsReturnType<EmployeesDataItemType>;
+    dataItems['kanban'] = await getKanban({ baseURL, init:requesOptions});
+  }
   
   console.log('requisições diárias', (3600 * 24) / revalidate);
   // console.log('kanban on layout', kanban);
 
   const data:FetchDataState = {    
-    customers: {data: customers},
-    orders: {data: orders},
-    employees: {data: employees},
-    kanban: {data: kanban},
+    customers: {data: dataItems['customers'] as InsertRegisteredDomainsReturnType<CustomersDataItemType>},
+    orders: {data: dataItems['orders'] as InsertRegisteredDomainsReturnType<OrdersDataItemType>},
+    employees: {data: dataItems['employees'] as InsertRegisteredDomainsReturnType<EmployeesDataItemType>},
+    kanban: {data: dataItems['kanban']},
     finances: {
       earning: earningData,
       revenueReport: stackedChartData,
     },
-    schedule: {data: schedule},
+    schedule: {data: dataItems['schedule']},
     baseURL: baseURL,
   };
 
