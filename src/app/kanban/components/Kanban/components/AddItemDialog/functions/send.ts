@@ -2,6 +2,7 @@ import { ResponseKanbanCreateOk } from '@/app/api/kanban/create/route';
 import { DataState } from '@/contexts/providers/GlobalProvider/types';
 import { Info } from '@/contexts/providers/InfoProvider/types';
 import { SetBoolean, SetState } from '@/contexts/types';
+import { kanbanData } from '@/data/kanan/data';
 import { KanbanDataItemType } from '@/data/kanan/types';
 import fetchAuthJson from '@/dataFetching/fetchAuthJson';
 import getKanban from '@/dataFetching/getKanban';
@@ -57,7 +58,12 @@ export default async function send({ changes, baseURL, setGlobalData, setChanges
   setOpacity(false); 
   setHidden(true);
 
-  const storageData = JSON.parse(localStorage.getItem('kanban') ?? `[]`);
+  let storageData = [];
+    try {
+      storageData = JSON.parse(localStorage.getItem('kanban') ?? `[]`);
+    } catch(e) {
+      storageData = kanbanData;
+    };
   const change = createObjectArray(storageData, response.create);
   localStorage.setItem('kanban', JSON.stringify(change));
 
