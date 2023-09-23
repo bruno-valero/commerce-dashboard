@@ -55,11 +55,11 @@ export default async function RootLayout({ children }:RootLayoutProps) {
   } = {};
   // try {
 
-  dataItems['schedule'] = await getSchedule({ baseURL, init:requesOptions});  
-  dataItems['customers'] = await getCustomers({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
-  dataItems['orders'] = await getOrders({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
-  dataItems['employees'] = await getEmployees({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string});
-  dataItems['kanban'] = await getKanban({ baseURL, init:requesOptions});
+  dataItems['schedule'] = await getSchedule({ baseURL, init:requesOptions}) ?? [];
+  dataItems['customers'] = await getCustomers({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string}) ?? [];
+  dataItems['orders'] = await getOrders({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string}) ?? [];
+  dataItems['employees'] = await getEmployees({ baseURL, init:requesOptions, registeredDomains: process.env.REGISTERED_DOMAINS as string}) ?? [];
+  dataItems['kanban'] = await getKanban({ baseURL, init:requesOptions}) ?? [];
   
   // } catch(e) {
   //   // insertRegisteredDomains

@@ -26,12 +26,12 @@ export default async function onCreateSchedule({data, setInfo, baseURL, setGloba
 
   try {
 
-    const response:ResponseCalendarCreate = await fetchAuthJson({input:updateURL, init:requestInit});
+    const response:ResponseCalendarCreate = await fetchAuthJson({input:updateURL, init:requestInit}) ?? {};
     if (!response) return;
     const error = response as RequestError;
     
     if (error.error) {
-      const databaseData = await getSchedule({baseURL, init:requestInit});
+      const databaseData = await getSchedule({baseURL, init:requestInit}) ?? [];
       delete requestInit.data.body;
       setGlobalData(prev => ({...prev, schedule:{...prev.schedule, data: databaseData} }));
       return alert(error.error);

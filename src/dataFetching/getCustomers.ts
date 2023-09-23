@@ -3,9 +3,9 @@ import { CustomersDataItemType } from '@/data/grid/customers/types';
 import fetchAuthJson from './fetchAuthJson';
 import { FetchAuthInit, FetchAuthInput } from './types';
 
-export default async function getCustomers({ baseURL, init, registeredDomains }:GetCustomersPropsType):Promise<InsertRegisteredDomainsReturnType<CustomersDataItemType>> {
+export default async function getCustomers({ baseURL, init, registeredDomains }:GetCustomersPropsType):Promise<InsertRegisteredDomainsReturnType<CustomersDataItemType> | null> {
   const input:FetchAuthInput = baseURL + '/api/customers';
-  const response = await fetchAuthJson({ input, init, registeredDomains}) as Promise<InsertRegisteredDomainsReturnType<CustomersDataItemType>>;
+  const response = await fetchAuthJson({ input, init, registeredDomains}) as Promise<InsertRegisteredDomainsReturnType<CustomersDataItemType> | null>;
   return response;
 };
 

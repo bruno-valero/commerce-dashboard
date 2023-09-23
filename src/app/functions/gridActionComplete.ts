@@ -101,15 +101,15 @@ async function gridCRUDRequest ({ data, url, setInfo, gridType, baseURL, setGlob
 
     const reqTypeFiltered = reqType as 'create' | 'update' | 'remove';
     if ((reqTypeFiltered) === 'create') {
-      responses.create = await fetchAuthJson({input:url, init:requestInit}) as ResponseCreate;
+      responses.create = (await fetchAuthJson({input:url, init:requestInit}) ?? []) as ResponseCreate;
     };
 
     if ((reqTypeFiltered) === 'update') {
-      responses.update = await fetchAuthJson({input:url, init:requestInit}) as ResponseUpdate;
+      responses.update = (await fetchAuthJson({input:url, init:requestInit}) ?? []) as ResponseUpdate;
     };
 
     if ((reqTypeFiltered) === 'remove') {
-      responses.remove = await fetchAuthJson({input:url, init:requestInit}) as ResponseRemove;
+      responses.remove = (await fetchAuthJson({input:url, init:requestInit}) ?? []) as ResponseRemove;
     };
 
     const response  = responses[reqTypeFiltered] as ResponseCreate & ResponseUpdate & ResponseRemove | nullish;

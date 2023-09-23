@@ -21,13 +21,13 @@ export default async function onRemoveKanban({data, setInfo, baseURL, setGlobalD
 
   try {
 
-    const response:ResponseKanbanRemove = await fetchAuthJson({input:updateURL, init:requestInit});
+    const response:ResponseKanbanRemove = await fetchAuthJson({input:updateURL, init:requestInit}) ?? {};
     if (!response) return;
     const error = response as RequestError;
 
     if (error.error) {
       delete requestInit.data.body;
-      const databaseData = await getKanban({baseURL, init:requestInit});
+      const databaseData = await getKanban({baseURL, init:requestInit}) ?? [];
       setGlobalData(prev => ({...prev, kanban:{...prev.kanban, data: databaseData} }));
       return alert(error.error);
     };

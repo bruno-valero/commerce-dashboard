@@ -26,7 +26,7 @@ export default async function send({ changes, baseURL, setGlobalData, setChanges
     data: {id: '123456', user:'bruno'}
   };
   const newData = {
-    Id: Math.max(...(await getKanban({ baseURL, init })).map(item => item.Id) as Array<number>) + 1,
+    Id: Math.max(...(await getKanban({ baseURL, init }) ?? []).map(item => item.Id) as Array<number>) + 1,
     Title:changes['Title'],
     Status:changes['Status'],
     Summary:changes['Summary'],
