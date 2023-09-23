@@ -8,13 +8,13 @@ import { DataToStorage } from './types';
 
 export default function getFromLocalStorage(data:DataToStorage):DataToStorage {
   
-  const customers:InsertRegisteredDomainsReturnType<CustomersDataItemType> = localStorage.getItem('customers') ? JSON.parse(localStorage.getItem('customers') as string) : null
-  const orders:InsertRegisteredDomainsReturnType<OrdersDataItemType> = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders') as string) : null
-  const employees:InsertRegisteredDomainsReturnType<EmployeesDataItemType> = localStorage.getItem('employees') ? JSON.parse(localStorage.getItem('employees') as string) : null
-  const kanban:KanbanDataType = localStorage.getItem('kanban') ? JSON.parse(localStorage.getItem('kanban') as string) : null
-  const earning:EarningDataType = localStorage.getItem('earning') ? JSON.parse(localStorage.getItem('earning') as string) : null
-  const revenueReport:RevenueReport = localStorage.getItem('revenueReport') ? JSON.parse(localStorage.getItem('revenueReport') as string) : null
-  const schedule:ScheduleDataType = localStorage.getItem('schedule') ? JSON.parse(localStorage.getItem('schedule') as string) : null
+  const customers:InsertRegisteredDomainsReturnType<CustomersDataItemType> = localStorage.getItem('customers') ? JSON.parse(localStorage.getItem('customers') ?? '[]' as string) : null
+  const orders:InsertRegisteredDomainsReturnType<OrdersDataItemType> = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders') ?? '[]' as string) : null
+  const employees:InsertRegisteredDomainsReturnType<EmployeesDataItemType> = localStorage.getItem('employees') ? JSON.parse(localStorage.getItem('employees') ?? '[]' as string) : null
+  const kanban:KanbanDataType = localStorage.getItem('kanban') ? JSON.parse(localStorage.getItem('kanban') ?? '[]' as string) : null
+  const earning:EarningDataType = localStorage.getItem('earning') ? JSON.parse(localStorage.getItem('earning') ?? '[]' as string) : null
+  const revenueReport:RevenueReport = localStorage.getItem('revenueReport') ? JSON.parse(localStorage.getItem('revenueReport') ?? '{}' as string) : null
+  const schedule:ScheduleDataType = localStorage.getItem('schedule') ? JSON.parse(localStorage.getItem('schedule') ?? '[]' as string) : null
 
   const result:DataToStorage = {
     customers: customers ?? localStorage.setItem('customers', JSON.stringify(data.customers)) ?? data.customers,
