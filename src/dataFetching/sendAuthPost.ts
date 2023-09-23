@@ -1,6 +1,6 @@
 import { Obj } from '@/common.types';
 
-export default async function sendAuthPost({ input, init }:SendAuthPostPropsType):Promise<any> {
+export default async function sendAuthPost({ input, init }:SendAuthPostPropsType):Promise<Response | null> {
   const initBody = init?.data?.body;
   const id = init?.data.id;
   const user = init?.data.user;
@@ -8,6 +8,7 @@ export default async function sendAuthPost({ input, init }:SendAuthPostPropsType
   const method = 'POST';  
   const options = { ...init, body, method };
   const response = await fetch(input, options);
+  if (!response.ok) return null;
   return response;
 }
 
