@@ -26,7 +26,7 @@ export default function EarningItem({ type, title, icon, iconColor, iconBg }:Ear
 
   return (
     <div
-    className="flex flex-col justify-center items-center bg-white dark:text-gray-200 dark:bg-blue-900 md:w-56 p-4 pt-9 rounded-2xl">
+    className="flex flex-col justify-center items-center bg-gray-300 dark:text-gray-200 text-black dark:bg-gray-800 md:w-56 p-4 pt-9 rounded-2xl">
       <button 
       type='button' 
       style={{color: data.iconColor, backgroundColor: data.iconBg}}
@@ -38,7 +38,7 @@ export default function EarningItem({ type, title, icon, iconColor, iconBg }:Ear
         <span className="text-lg font-semibold">
           {data.amount.toLocaleString()}
         </span>
-        <span style={{color: data.pcColor}} className={`text-s ml-2`}>
+        <span style={{color: data.pcColor === 'rgba(40,250,40,.8)' ? 'rgba(40,180,40,.9)' : data.pcColor}} className={`text-s ml-2`}>
           {`${data.percentage.toFixed(2)}%`}
         </span>
       </p>

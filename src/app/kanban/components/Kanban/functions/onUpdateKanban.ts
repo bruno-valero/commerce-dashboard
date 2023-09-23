@@ -1,22 +1,18 @@
-import { ResponseCalendarUpdate, ResponseCalendarUpdateOk } from '@/app/api/calendar/update/route';
+import { ResponseKanbanUpdate, ResponseKanbanUpdateOk } from '@/app/api/kanban/update/route';
 import { RequestError } from '@/app/api/types';
-import { ScheduleDataItemType } from '@/common.types';
 import { BaseURLDataState, DataState } from '@/contexts/providers/GlobalProvider/types';
 import { Info } from '@/contexts/providers/InfoProvider/types';
 import { SetState } from '@/contexts/types';
+import { KanbanDataItemType } from '@/data/kanan/types';
 import fetchAuthJson from '@/dataFetching/fetchAuthJson';
 import getSchedule from '@/dataFetching/getSchedule';
 import { FetchAuthInit } from '@/dataFetching/types';
-import tsUTCToDateTime from '@/utils/dateTime/tsUTCToDateTime';
+import updateObjectArray from '@/utils/CRUD/updateObjectArray';
 
-export default async function onUpdateSchedule({data, setInfo, baseURL, setGlobalData}:OnUpdateSchedulePropsType):Promise<void> {
-  const newData = data.map(item => {
-    item.StartTime = tsUTCToDateTime({ts: item.StartTime as unknown as number});
-    item.EndTime = tsUTCToDateTime({ts: item.StartTime as unknown as number});
-    return item;
-  });
+export default async function onUpdateKanban({data, setInfo, baseURL, setGlobalData}:OnUpdateKanbanPropsType):Promise<void> {
+  const newData = data;
 
-  const updateURL:string = baseURL + '/api/calendar/update'
+  const updateURL:string = baseURL + '/api/kanban/update'
   
   const requestInit:FetchAuthInit = {
     data: {id:'123456', user:'bruno', body:newData},
@@ -24,7 +20,7 @@ export default async function onUpdateSchedule({data, setInfo, baseURL, setGloba
 
   try {
 
-    const response:ResponseCalendarUpdate = await fetchAuthJson({input:updateURL, init:requestInit});
+    const response:ResponseKanbanUpdate = await fetchAuthJson({input:updateURL, init:requestInit});
     if (!response) return;
     const error = response as RequestError;
     
@@ -35,12 +31,17 @@ export default async function onUpdateSchedule({data, setInfo, baseURL, setGloba
       return alert(error.error);
     };
     
-    const responseData = response as ResponseCalendarUpdateOk;
+    const responseData = response as ResponseKanbanUpdateOk;
     console.log('responseData', responseData);
     
     const oneItem = responseData.update.length === 1;
-    const subject = !oneItem ? 'Itens' : responseData.update[0].Subject;
-    const text = !oneItem ? `${subject} alterados com sucesso!` : `${subject} alterado com sucesso!`
+    const title = !oneItem ? 'Itens' : responseData.update[0].Title;
+    const text = !oneItem ? `${title} alterados com sucesso!` : `${title} alterado com sucesso!`
+    
+    const storageData = JSON.parse(localStorage.getItem('kanban') ?? `[]`);
+    const change = updateObjectArray(storageData, responseData.update, 'Id', 'Id');
+    localStorage.setItem('kanban', JSON.stringify(change));
+
     setInfo(prev => ({...prev, visible: false }));
     setInfo({visible: true, text, changed: true });
     
@@ -50,9 +51,9 @@ export default async function onUpdateSchedule({data, setInfo, baseURL, setGloba
   
 };
 
-export type OnUpdateSchedulePropsType = {
-  data: Array<ScheduleDataItemType>, 
+export type OnUpdateKanbanPropsType = {
+  data: Array<KanbanDataItemType>, 
   setInfo: SetState<Info>, 
   setGlobalData: SetState<DataState>
 } & BaseURLDataState;
-export type OnUpdateScheduleType = (props:OnUpdateSchedulePropsType) => Promise<void>;
+export type OnUpdateKanbanType = (props:OnUpdateKanbanPropsType) => Promise<void>;

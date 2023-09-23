@@ -14,7 +14,8 @@ export async function GET(req:Request):Promise<void> {
 export async function POST(req:Request):Promise<NextResponse<ResponseCalendarCreate>> {
   const { body:create, id, user } = (await req.json() as SendAuthPostRequest<Array<ScheduleDataItemType>>);
   if (!create) return NextResponse.json({ error:'Está faltando o body da requisição' });
-  console.log('data on calendar create Post', create);
+  // console.log('data on calendar create Post', create);
+  const baseURL = process.env.BASE_URL;
 
   return NextResponse.json({ create });
 };

@@ -5,7 +5,7 @@ import './globals.css';
 
 import { EarningDataType, RevenueReport, ScheduleDataType } from '@/common.types';
 import Menu from '@/components/Menu/index';
-import ToolTipClientComponent from '@/components/ToolTipClientComponent';
+import SettingsButton from '@/components/SettingsButton/index';
 import GlobalProvider from '@/contexts/providers/GlobalProvider';
 import { earningData, stackedChartData } from '@/data/dummyTSX';
 import { CustomersDataItemType } from '@/data/grid/customers/types';
@@ -18,7 +18,6 @@ import getKanban from '@/dataFetching/getKanban';
 import getOrders from '@/dataFetching/getOrders';
 import getSchedule from '@/dataFetching/getSchedule';
 import { ReactNode } from 'react';
-import { FiSettings } from 'react-icons/fi';
 import { InsertRegisteredDomainsReturnType } from './functions/insertRegisteredDomains';
 
 
@@ -80,13 +79,9 @@ export default async function RootLayout({ children }:RootLayoutProps) {
     <html lang="en">
       <body className={inter.className}>
         <GlobalProvider syncfusionRegisterLicence={process.env.SYNCFUSION_REGISTER_LICENCE} globalData={data} envs={envs} >
-          <main className="flex relative dark:bg-blue-950 min-h-[100vh]">
+          <main className="flex relative dark:bg-gray-900 bg-white min-h-[100vh]">
             <div className="fixed right-4 bottom-4 z-50">
-                <ToolTipClientComponent content='Opções' position='TopCenter' >
-                  <button type='button' className='text-3xl p-3 hover:drop-shadow-xl hover:bg-gray-300 text-white bg-blue-500 rounded-[50%]'>
-                    <FiSettings />
-                  </button>
-                </ToolTipClientComponent>
+                <SettingsButton />
             </div>
             
             <Menu>

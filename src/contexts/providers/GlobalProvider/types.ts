@@ -7,6 +7,7 @@ import { InsertRegisteredDomainsReturnType } from '@/app/functions/insertRegiste
 import { LastYearReport } from '@/app/functions/makeEaringData';
 import { Envs } from '@/app/layout';
 import { EarningDataType, RevenueReport, ScheduleDataType } from '@/common.types';
+import { OpenTheme } from '@/components/ThemeSettings/type';
 import { UseState } from '@/contexts/types';
 import { CustomersDataItemType } from '@/data/grid/customers/types';
 import { EmployeesDataItemType } from '@/data/grid/employees/types';
@@ -18,6 +19,7 @@ import { KanbanDataType, KanbanGridType } from '@/data/kanan/types';
 export type PathnameState = {pathname: string};
 export type ChatState = {chat: UseState<boolean>};
 export type CartState = {cart: UseState<boolean>};
+export type OpenThemeState = {openTheme: UseState<OpenTheme>};
 export type UserProfileState = {userProfile: UseState<boolean>};
 export type NotificationState = {notification: UseState<boolean>};
 export type ScreenSizeState = {screenSize: UseState<number>};
@@ -25,7 +27,7 @@ export type ActiveMenuState = {activeMenu: UseState<boolean>};
 export type ContextDataState = {data: UseState<DataState>};
 export type NotRegisteredDomainState = {notRegisteredDomain: UseState<boolean>}
 
-export type GlobalContextStates = PathnameState & ChatState & CartState & UserProfileState & NotificationState & ActiveMenuState & ScreenSizeState & ContextDataState & NotRegisteredDomainState;
+export type GlobalContextStates = PathnameState & ChatState & CartState & OpenThemeState & UserProfileState & NotificationState & ActiveMenuState & ScreenSizeState & ContextDataState & NotRegisteredDomainState;
 
 // -----------------------------------------------------
 // Global States
@@ -58,6 +60,17 @@ ScheduleDataState &
 KanbanDataState & 
 BaseURLDataState &
 EnvsDataState;
+
+
+export type DataToStorage = {
+  customers: InsertRegisteredDomainsReturnType<CustomersDataItemType>,
+  orders: InsertRegisteredDomainsReturnType<OrdersDataItemType>,
+  employees: InsertRegisteredDomainsReturnType<EmployeesDataItemType>,
+  kanban: KanbanDataType,
+  earning: EarningDataType,
+  revenueReport: RevenueReport,
+  schedule: ScheduleDataType,
+}
 
 // -----------------------------------------------------
 // GlobalState

@@ -40,7 +40,7 @@ export default function ChartsSparkLine({ currentColor, id, type, height, width,
       format: '${xval} [%Lucro]: ${yval}%',
       trackLineSettings: { visible: true }
     }}
-    markerSettings={{visible: ['All'], fill: 'rgba(220,250,220,.8)' }}
+    markerSettings={{visible: ['All'], fill: 'rgba(120,180,120,.8)' }}
     > 
 
     <Inject services={[SparklineTooltip]} />

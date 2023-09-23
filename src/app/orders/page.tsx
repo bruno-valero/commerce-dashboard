@@ -12,7 +12,7 @@ export default async function Orders() {
   return (
     <div className='m-2 md:m-10 p-2 md:p-10 dark:bg-blue-900 bg-white rounded-3xl relative'>
       <InfoProvider>
-        <Header category='página' title='Orders' />
+        <Header category='página' title='Pedidos' />
         <InfoRequest />
         <OrdersList />
       </InfoProvider>

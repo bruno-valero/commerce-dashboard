@@ -7,6 +7,7 @@ import { SetState } from '@/contexts/types';
 import fetchAuthJson from '@/dataFetching/fetchAuthJson';
 import getSchedule from '@/dataFetching/getSchedule';
 import { FetchAuthInit } from '@/dataFetching/types';
+import createObjectArray from '@/utils/CRUD/createObjectArray';
 import tsUTCToDateTime from '@/utils/dateTime/tsUTCToDateTime';
 
 export default async function onCreateSchedule({data, setInfo, baseURL, setGlobalData}:OnCreateSchedulePropsType):Promise<void> {
@@ -29,8 +30,8 @@ export default async function onCreateSchedule({data, setInfo, baseURL, setGloba
     const error = response as RequestError;
     
     if (error.error) {
-      delete requestInit.data.body;
       const databaseData = await getSchedule({baseURL, init:requestInit});
+      delete requestInit.data.body;
       setGlobalData(prev => ({...prev, schedule:{...prev.schedule, data: databaseData} }));
       return alert(error.error);
     };
@@ -41,6 +42,11 @@ export default async function onCreateSchedule({data, setInfo, baseURL, setGloba
     const oneItem = responseData.create.length === 1;
     const subject = !oneItem ? 'Itens' : responseData.create[0].Subject;
     const text = !oneItem ? `${subject} criados com sucesso!` : `${subject} criado com sucesso!`;
+    
+    const storageData = JSON.parse(localStorage.getItem('schedule') ?? `[]`)
+    const change = createObjectArray(storageData, responseData.create);
+    localStorage.setItem('schedule', JSON.stringify(change));
+    
     setInfo(prev => ({...prev, visible: false }));
     setInfo({visible: true, text, changed: true });
 

@@ -14,7 +14,7 @@ export const gridEmployeeProfile = (props:EmployeesDataItemType) => {
   if ((domain.isDomain && domain.valid) || !domain.isDomain) return (
     <div className="flex items-center gap-2">
       <Image
-        className="rounded-full w-[80%] h-auto bg-contain"
+        className="rounded-full h-auto bg-contain"
         src={props['Image']}
         alt="employee"
         width={50}

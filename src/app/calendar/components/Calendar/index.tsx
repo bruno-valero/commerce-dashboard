@@ -1,7 +1,7 @@
 'use client'
 
 import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
-import { ActionEventArgs, Agenda, Day, DragAndDrop, Inject, Month, MonthAgenda, Resize, ScheduleComponent, ViewDirective, ViewsDirective, Week, WorkWeek } from '@syncfusion/ej2-react-schedule';
+import { ActionEventArgs, Agenda, Day, DragAndDrop, DragEventArgs, Inject, Month, MonthAgenda, NavigateOptions, Resize, ResizeEventArgs, ScheduleComponent, ViewDirective, ViewsDirective, Week, WorkWeek } from '@syncfusion/ej2-react-schedule';
 
 import { useInfoState } from '@/contexts/providers/InfoProvider/InfoContext';
 import { L10n, loadCldr } from '@syncfusion/ej2-base';
@@ -40,9 +40,11 @@ export default function CalendarComponent({  }:CalendarComponentProps) {
     <ScheduleComponent
     height='650px'
     eventSettings={{dataSource: schedule.data}}    
-    selectedDate={new Date(2021, 0, 10)}
+    // selectedDate={new Date(2021, 0, 10)}
     locale='pt'
     actionComplete={(event:ActionEventArgs) => onActionSchedule({...event, baseURL, setInfo, setGlobalData})}
+    dragStart={(e:DragEventArgs) => {e.interval = 1;(e.navigation as NavigateOptions).enable = true;}}
+    resizeStart={(e:ResizeEventArgs) => {e.interval = 1}}
     >
       <ViewsDirective>
         <ViewDirective option='Day' displayName='Dia' />

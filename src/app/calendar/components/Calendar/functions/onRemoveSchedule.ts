@@ -7,6 +7,7 @@ import { SetState } from '@/contexts/types';
 import fetchAuthJson from '@/dataFetching/fetchAuthJson';
 import getSchedule from '@/dataFetching/getSchedule';
 import { FetchAuthInit } from '@/dataFetching/types';
+import deleteObjectArray from '@/utils/CRUD/deleteObjectArray';
 import tsUTCToDateTime from '@/utils/dateTime/tsUTCToDateTime';
 
 export default async function onRemoveSchedule({data, setInfo, baseURL, setGlobalData}:OnRemoveSchedulePropsType):Promise<void> {
@@ -41,6 +42,11 @@ export default async function onRemoveSchedule({data, setInfo, baseURL, setGloba
     const oneItem = responseData.remove.length === 1;
     const subject = !oneItem ? 'Itens' : responseData.remove[0].Subject;
     const text = !oneItem ? `${subject} removidos com sucesso!` : `${subject} removido com sucesso!`;
+    
+    const storageData = JSON.parse(localStorage.getItem('schedule') ?? `[]`)
+    const change = deleteObjectArray(storageData, responseData.remove, 'Id', 'Id');
+    localStorage.setItem('schedule', JSON.stringify(change));
+    
     setInfo(prev => ({...prev, visible: false }));
     setInfo({visible: true, text, changed: true });
 

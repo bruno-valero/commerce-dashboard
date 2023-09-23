@@ -7,12 +7,13 @@ import { SetState } from '@/contexts/types';
 import fetchAuthJson from '@/dataFetching/fetchAuthJson';
 import getSchedule from '@/dataFetching/getSchedule';
 import { FetchAuthInit } from '@/dataFetching/types';
+import updateObjectArray from '@/utils/CRUD/updateObjectArray';
 import tsUTCToDateTime from '@/utils/dateTime/tsUTCToDateTime';
 
 export default async function onUpdateSchedule({data, setInfo, baseURL, setGlobalData}:OnUpdateSchedulePropsType):Promise<void> {
   const newData = data.map(item => {
     item.StartTime = tsUTCToDateTime({ts: item.StartTime as unknown as number});
-    item.EndTime = tsUTCToDateTime({ts: item.StartTime as unknown as number});
+    item.EndTime = tsUTCToDateTime({ts: item.EndTime as unknown as number});
     return item;
   });
 
@@ -41,6 +42,11 @@ export default async function onUpdateSchedule({data, setInfo, baseURL, setGloba
     const oneItem = responseData.update.length === 1;
     const subject = !oneItem ? 'Itens' : responseData.update[0].Subject;
     const text = !oneItem ? `${subject} alterados com sucesso!` : `${subject} alterado com sucesso!`
+    
+    const storageData = JSON.parse(localStorage.getItem('schedule') ?? `[]`)
+    const change = updateObjectArray(storageData, responseData.update, 'Id', 'Id');
+    localStorage.setItem('schedule', JSON.stringify(change));
+    
     setInfo(prev => ({...prev, visible: false }));
     setInfo({visible: true, text, changed: true });
     

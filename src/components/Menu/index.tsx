@@ -12,6 +12,7 @@ import { BsChatLeft } from 'react-icons/bs';
 import { FiShoppingCart } from 'react-icons/fi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { RiNotification3Line } from 'react-icons/ri';
+import ThemeSettings from '../ThemeSettings/index';
 import handleCloseSideBar from './functions/handleCloseSideBar';
 // registerLicense('ORg4AjUWIQA/Gnt2V1hiQlBGfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hSn5ad0djUH9bcXNSRWlY');
 
@@ -24,6 +25,7 @@ export default function Menu({ children }:MenuProps) {
 
   const globalState = useGlobalState();
   const [activeMenu, setActiveMenu ] = globalState.activeMenu;
+  const [openTheme, setOpenTheme] = globalState.openTheme
   const [cart, setCart] = globalState.cart;
   const [chat, setChat] = globalState.chat;
   const [notification, setNotification] = globalState.notification;
@@ -48,8 +50,9 @@ export default function Menu({ children }:MenuProps) {
 
   return (
     <>
+    <ThemeSettings />
       {activeMenu ? (
-        <div className='w-72 fixed dark:bg-blue-950 bg-white shadow-sm z-50'>
+        <div className='w-72 fixed dark:bg-gray-900 bg-white shadow-sm z-50'>
           <SideBar.Root>
             <SideBar.CloseButton />
             <SideBar.Logo href='/' text='Valero' handleCloseSideBar={handleCloseSideBar} />
@@ -72,15 +75,15 @@ export default function Menu({ children }:MenuProps) {
           <p>Menu Oculto</p>
         </div>
       )}
-      <div className={`dark:bg-blue-950 bg-white min-h-screen ${activeMenu ? 'ml-72' : 'flex-2'} w-full max-xl:w-[75%] max-lg:w-full` }>
-        <div className='fixed md:static bg-white dark:bg-blue-950 w-full'>
+      <div className={`dark:bg-gray-900 bg-white min-h-screen ${activeMenu ? 'ml-72' : 'flex-2'} w-full max-xl:w-[75%] max-lg:w-full` }>
+        <div className='fixed md:static bg-white dark:bg-gray-900 w-full'>
           <Navbar.Root>
-            <Navbar.Button title='Menu' icon={<AiOutlineMenu />} color='text-blue-500' dotColor='bg-red-500' customFunc={() => setActiveMenu(prev => !prev)} />
+            <Navbar.Button title='Menu' icon={<AiOutlineMenu />} style={{color:openTheme.currentColor}} dotColor='bg-red-500' customFunc={() => setActiveMenu(prev => !prev)} />
             <div className='flex flex-row justify-between gap-6'>
-              <Navbar.Button title='Carrinho' icon={<FiShoppingCart />} color='text-blue-500' dotColor='bg-red-500' customFunc={() => setCart(prev => !prev)} />
-              <Navbar.Button title='Chat' icon={<BsChatLeft />} color='text-blue-500' dotColor='bg-red-500' customFunc={() => setChat(prev => !prev)} />
-              <Navbar.Button title='Notificações' icon={<RiNotification3Line />} color='text-blue-500' dotColor='bg-red-500' customFunc={() => setNotification(prev => !prev)} />
-              <Navbar.Profile title='Perfil' icon={<MdKeyboardArrowDown />} color='text-blue-500' dotColor='bg-red-500' customFunc={() => setUserProfile(prev => !prev)} />
+              <Navbar.Button title='Carrinho' icon={<FiShoppingCart />} style={{color:openTheme.currentColor}} dotColor='bg-red-500' customFunc={() => setCart(prev => !prev)} />
+              <Navbar.Button title='Chat' icon={<BsChatLeft />} style={{color:openTheme.currentColor}} dotColor='bg-red-500' customFunc={() => setChat(prev => !prev)} />
+              <Navbar.Button title='Notificações' icon={<RiNotification3Line />} style={{color:openTheme.currentColor}} dotColor='bg-red-500' customFunc={() => setNotification(prev => !prev)} />
+              <Navbar.Profile title='Perfil' icon={<MdKeyboardArrowDown />} style={{color:openTheme.currentColor}} dotColor='bg-red-500' customFunc={() => setUserProfile(prev => !prev)} />
             </div>
           </Navbar.Root>
         </div>

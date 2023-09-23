@@ -5,6 +5,9 @@ import { SetState } from '@/contexts/types';
 import { GridsDataItemTypes } from '@/data/grid/types';
 import fetchAuthJson from '@/dataFetching/fetchAuthJson';
 import { FetchAuthInit } from '@/dataFetching/types';
+import createObjectArray from '@/utils/CRUD/createObjectArray';
+import deleteObjectArray from '@/utils/CRUD/deleteObjectArray';
+import updateObjectArray from '@/utils/CRUD/updateObjectArray';
 import isObjectKeysNullish from '@/utils/objects/isObjectKeysNullish';
 import { ActionEventArgs } from '@syncfusion/ej2-react-grids/index';
 import { ResponseCustomersCreate, ResponseCustomersCreateOk } from '../api/customers/create/route';
@@ -120,14 +123,34 @@ async function gridCRUDRequest ({ data, url, setInfo, gridType, baseURL, setGlob
     }
     const text = texts[reqTypeFiltered];
     console.log('setando info', setInfo);
-    const fetchedData = await fetchAuthJson({input: baseURL + '/api/' + gridType, init:{data:{id:'123456', user:'bruno'}}, registeredDomains}) as Array<GridsDataItemTypes>;
-    console.log('fetchedData', fetchedData);
+    const storageData = JSON.parse(localStorage.getItem(gridType) ?? `[]`) as Array<GridsDataItemTypes>;
+    console.log('storageData', storageData);
     console.log('newData', newData);
-    console.log('fetchedData + newData', [...newData,...fetchedData]);
+    console.log('storageData + newData', [...newData,...storageData]);
     
     if (reqTypeFiltered === 'create') {
-      setGlobalData(prev => ({...prev, [gridType]:{...prev[gridType], data:[...fetchedData,...newData]}}));
+      setGlobalData(prev => ({...prev, [gridType]:{...prev[gridType], data:[...storageData,...newData]}}));
     };
+
+    if ((reqTypeFiltered) === 'create') {
+      // const storageData = JSON.parse(localStorage.getItem(gridType) ?? `[]`)
+      const change = createObjectArray(storageData, data.create);
+      localStorage.setItem(gridType, JSON.stringify(change));
+    };
+
+    if ((reqTypeFiltered) === 'update') {
+      // const storageData = JSON.parse(localStorage.getItem(gridType) ?? `[]`)
+      const change = updateObjectArray(storageData, data.update, 'Id', 'Id');
+      localStorage.setItem(gridType, JSON.stringify(change));
+    };
+
+    if ((reqTypeFiltered) === 'remove') {
+      // const storageData = JSON.parse(localStorage.getItem(gridType) ?? `[]`)
+      const change = deleteObjectArray(storageData, data.remove, 'Id', 'Id');
+      localStorage.setItem(gridType, JSON.stringify(change));
+    };
+    
+
     setInfo(prev => ({...prev, visible: false }));
     setInfo({visible: true, text, changed: true });
 
@@ -161,12 +184,14 @@ export default async function gridActionComplete({ event, setNotRegisteredDomain
     if (isObjectKeysNullish({ obj:data })) {
       const {Id, ...dataWthoutID} = {...data};
       if (isObjectKeysNullish({ obj:dataWthoutID })) {
-        const response = await fetchAuthJson({input: baseURL + '/api/' + gridType, init:{data:{id:'123456', user:'bruno'}}, registeredDomains}) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>;
+        // busca do local storage
+        const response = insertRegisteredDomains(JSON.parse(localStorage.getItem(gridType) ?? '[]'), registeredDomains) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>;
         setGlobalData(prev => ({...prev, [gridType]:{...prev[gridType], data:response}}));
         return alert('Insira todos os campos');
       } else 
       if ((addAction && !data['Id'])) {
-        const response = await fetchAuthJson({input: baseURL + '/api/' + gridType, init:{data:{id:'123456', user:'bruno'}}, registeredDomains}) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>;
+        // busca do local storage
+        const response = insertRegisteredDomains(JSON.parse(localStorage.getItem(gridType) ?? '[]'), registeredDomains) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>;
         console.log('response on create grid', response);
         
         const graterID:number = Math.max(...response.map(item => item.Id));
