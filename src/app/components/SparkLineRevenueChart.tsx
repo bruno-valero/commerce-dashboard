@@ -24,7 +24,7 @@ export default function SparkLineRevenueChart({ children }:SparkLineRevenueChart
   return (
     <div className="mt-5">
       <Charts.SparkLine 
-      currentColor='green' 
+      currentColor='rgba(80,150,80,.9)' 
       id='line-sparkline'
       type='Line'
       height='80px'

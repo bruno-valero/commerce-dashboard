@@ -20,7 +20,7 @@ export default function Home() {
       </div>
           {/* Grafcs section */}
       <div className='flex gap-10 flex-wrap justify-center mr-10'>
-        <div className='bg-white dark:text-gray-200 dark:bg-blue-900 m-3 p-4 rounded-2xl md:w-[780px]'>
+        <div className='bg-gray-100 dark:text-gray-200 text-black dark:bg-gray-800 m-3 p-4 rounded-2xl md:w-[780px]'>
           <div className="flex justify-between">
             <p className='font-semibold text-xl'>
               Atualização de Renda              
@@ -53,7 +53,7 @@ export default function Home() {
               
               <div className="mt-10">
                 <Button 
-                bgColor='bg-blue-900 dark:bg-white' 
+                bgColor='bg-gray-800 dark:bg-white' 
                 color='text-white dark:text-blue-900'
                 text='Baixar Relatório'
                 size='text-md'

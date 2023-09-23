@@ -19,7 +19,7 @@ export default function makeStackedRevenueData({ revenueReport, budgetColor, exp
       yName: 'y',
       name: 'Receita',
       type: 'StackingColumn',
-      fill: budgetColor ?? 'rgba(10,200,40,.7)',      
+      fill: budgetColor ?? 'rgba(10,150,40,.9)',      
     },
   
     { dataSource: revenueReport['expense'],
@@ -27,7 +27,7 @@ export default function makeStackedRevenueData({ revenueReport, budgetColor, exp
       yName: 'y',
       name: 'Despesa',
       type: 'StackingColumn',
-      fill: expenseColor ?? 'rgba(200,10,10,.7)',  
+      fill: expenseColor ?? 'rgba(150,10,10,.8)',  
     },
     
   ];

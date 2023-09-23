@@ -1,6 +1,7 @@
 'use client'
 
 import { StackedCustomSeriesType } from '@/common.types';
+import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContext';
 import { AxisModel, Category, ChartAreaModel, ChartComponent, DataLabel, Inject, Legend, SeriesCollectionDirective, SeriesDirective, StackingColumnSeries, Tooltip } from '@syncfusion/ej2-react-charts';
 
 interface ChartsStackedProps {
@@ -14,6 +15,10 @@ interface ChartsStackedProps {
 }
 
 export default function ChartsStacked({ width, height, id, primaryXAxis, primaryYAxis, chartArea, data }:ChartsStackedProps) {
+  const globalState = useGlobalState();
+  const [activeMenu, setActiveMenu ] = globalState.activeMenu;
+  const [openTheme, setOpenTheme] = globalState.openTheme
+
   return (
     <ChartComponent
     width={width}
@@ -23,7 +28,7 @@ export default function ChartsStacked({ width, height, id, primaryXAxis, primary
     primaryYAxis={primaryYAxis}
     chartArea={chartArea}
     tooltip={{enable:true}}
-    legendSettings={{background: 'white'}}
+    legendSettings={{background: openTheme.currentMode === 'Dark' ? 'white' : 'rgba(0,0,0,.3)'}}
     >
       <Inject services={[Legend, Category, StackingColumnSeries, Tooltip, DataLabel]} />
       <SeriesCollectionDirective>

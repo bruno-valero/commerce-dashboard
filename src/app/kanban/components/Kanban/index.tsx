@@ -4,11 +4,12 @@ import { useGlobalState } from '@/contexts/providers/GlobalProvider/GlobalContex
 import { useInfoState } from '@/contexts/providers/InfoProvider/InfoContext';
 import KanbanCard from '@/data/kanan/components';
 
-import { ColumnDirective, ColumnsDirective, KanbanComponent } from '@syncfusion/ej2-react-kanban';
+import { ActionEventArgs, ColumnDirective, ColumnsDirective, KanbanComponent } from '@syncfusion/ej2-react-kanban';
 import { useState } from 'react';
 import { IoMdAdd } from 'react-icons/io';
-import AddItemDialog from './components/AddItemDialog';
+import AddItemDialog from './components/AddItemDialog/index';
 import CustomButton from './components/CustomButton';
+import onActionCompleteKanban from './functions/onActionCompleteKanban';
 
 // import { L10n, loadCldr } from '@syncfusion/ej2-base';
 // import pt from '@syncfusion/ej2-locale/src/pt.json';
@@ -94,7 +95,7 @@ export default function KanbanComp({  }:KanbanCompProps) {
     <div className='dark:bg-gray-800 bg-white rounded-lg flex flex-col justify-center'>
       
       <CustomButton icon={<IoMdAdd />} text='Adicionar um item' onPress={() => setVisible(true)} />
-      <AddItemDialog visible={visible} setVisible={setVisible} />
+      <AddItemDialog visible={visible} setVisible={setVisible} setInfo={setInfo} />
 
       <KanbanComponent
       id='kanban'
@@ -107,6 +108,7 @@ export default function KanbanComp({  }:KanbanCompProps) {
         headerField:'Id',
         template: KanbanCard,
       }}
+      actionComplete={(event:ActionEventArgs) => onActionCompleteKanban({...event, setInfo, setGlobalData, baseURL})}
       dialogSettings={{
         fields:[
           {
