@@ -3,7 +3,7 @@ const nextConfig = {
   images: {
     domains: process.env.REGISTERED_DOMAINS.split(',')
   },
-  async headers() {
+  headers: async () => {
     return [
       {
         // matching all API routes
