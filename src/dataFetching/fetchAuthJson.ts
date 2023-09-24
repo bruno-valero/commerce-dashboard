@@ -6,8 +6,8 @@ import { FetchAuthProps } from './types';
 
 export default async function fetchAuthJson({ input, init, registeredDomains }:FetchAuthJsonPropsType):Promise<any | InsertRegisteredDomainsReturnType<GridsDataItemTypes | null>> {
   const response = await (await sendAuthPost({ input, init}))?.json() ?? null as Obj<any>[] | any[] | null;
-  if (registeredDomains && response) {
-    const insertedDomains = insertRegisteredDomains(response, registeredDomains) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>
+  if (registeredDomains) {
+    const insertedDomains = insertRegisteredDomains(response ?? [], registeredDomains) as InsertRegisteredDomainsReturnType<GridsDataItemTypes>
     return insertedDomains;
   }
   return response;

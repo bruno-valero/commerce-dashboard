@@ -90,7 +90,8 @@ export default function GlobalProvider({ children, syncfusionRegisterLicence, gl
 
   useEffect(() => {
     const storageData = getFromLocalStorage(dataToStorage);
-    // const storageData = dataToStorage;
+    console.log('storageData.orders on GlobalContext', storageData.orders);
+    
     const color = localStorage.getItem('themeColor');
     const mode = localStorage.getItem('themeMode');
 
@@ -108,6 +109,7 @@ export default function GlobalProvider({ children, syncfusionRegisterLicence, gl
       schedule: {...prev.schedule, data:storageData.schedule},
       finances: {...prev.finances, revenueReport:storageData.revenueReport}
     }))
+
   },[]);
 
   return (
