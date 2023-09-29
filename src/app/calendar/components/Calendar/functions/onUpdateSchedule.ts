@@ -26,13 +26,13 @@ export default async function onUpdateSchedule({data, setInfo, baseURL, setGloba
 
   try {
 
-    const response:ResponseCalendarUpdate = await fetchAuthJson({input:updateURL, init:requestInit});
+    const response:ResponseCalendarUpdate = await fetchAuthJson({input:updateURL, init:requestInit}) ?? {};
     if (!response) return;
     const error = response as RequestError;
     
     if (error.error) {
       delete requestInit.data.body;
-      const databaseData = await getSchedule({baseURL, init:requestInit});
+      const databaseData = await getSchedule({baseURL, init:requestInit}) ?? [];
       setGlobalData(prev => ({...prev, schedule:{...prev.schedule, data: databaseData} }));
       return alert(error.error);
     };
@@ -46,7 +46,7 @@ export default async function onUpdateSchedule({data, setInfo, baseURL, setGloba
     
     let storageData = [];
     try {
-      storageData = scheduleData
+      storageData = JSON.parse(localStorage.getItem('schedule') ?? '[]')
     } catch(e) {
       storageData = scheduleData
     };

@@ -9,6 +9,7 @@ export async function GET(req:Request):Promise<void> {
 };
 
 export async function POST(req:Request) {  
+  // throw new Error('Este e um erro do calendario que o Bruno criou!')
   const data = await req.json();
   console.log('data on calendar Post', data);
   

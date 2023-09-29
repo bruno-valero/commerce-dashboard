@@ -14,6 +14,7 @@ import { employeesGrid } from '@/data/grid/employees/model';
 import { ordersGrid } from '@/data/grid/oders/model';
 import { kanbanGrid } from '@/data/kanan/model';
 import { registerLicense } from '@syncfusion/ej2-base';
+import getFromLocalStorage from './getFromLocalStorage';
 import { DataState, GlobalContextStates } from './types';
 
 interface GlobalProviderProps {
@@ -88,8 +89,9 @@ export default function GlobalProvider({ children, syncfusionRegisterLicence, gl
   } as GlobalContextStates;
 
   useEffect(() => {
-    // const storageData = getFromLocalStorage(dataToStorage);
-    const storageData = dataToStorage;
+    const storageData = getFromLocalStorage(dataToStorage);
+    console.log('storageData.orders on GlobalContext', storageData.orders);
+    
     const color = localStorage.getItem('themeColor');
     const mode = localStorage.getItem('themeMode');
 
@@ -107,6 +109,7 @@ export default function GlobalProvider({ children, syncfusionRegisterLicence, gl
       schedule: {...prev.schedule, data:storageData.schedule},
       finances: {...prev.finances, revenueReport:storageData.revenueReport}
     }))
+
   },[]);
 
   return (
